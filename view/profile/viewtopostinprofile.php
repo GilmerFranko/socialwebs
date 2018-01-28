@@ -1,6 +1,7 @@
 <?php
 	include_once($_SERVER['DOCUMENT_ROOT']."/model/conexionbase.php");
 	class viewtopostinprofile extends Conexion{
+		public $devuelvefila;
 		public function construc(){
 			parent::__construct();
 		}
@@ -10,11 +11,11 @@
 			if(mysqli_num_rows($resultado)>0){//si existe al menos una 
 				$a=0;
 				while($fila=$resultado->fetch_row()){//mientras exista recorra la fila
-					$devuelvefila[$a] =$fila;
+					$this->devuelvefila[$a] =$fila;
 					$a++;
 				}
 			}
-			return $devuelvefila;
+			return $this->devuelvefila;
 		}
 	}
 	/*$sql = ("SELECT * FROM publicaciones ORDER BY id DESC limit 5") ;
@@ -45,39 +46,86 @@
 	$viewtopostinprofile=new viewtopostinprofile();
 	
 ?>
-<?php 
+<?php
+	$pasa=true;
+	$end="end";
+	$boo=0;
 	$urlpage = $_GET['urlpage'];#mediante la url se pasara el id del post a mostrar
 	// Array de 50 elementos
-	$mensajes = array('');
-	// Devuelvo 10 elementos por página
-	$position = ($urlpage-1)*5;
-	$page=$viewtopostinprofile->vtpip(0,5);
-	//echo $page[0/*columna*/][0/*fila*/];
-	for ($x=0; $x<5; $x++) {
-		
+	if ($urlpage==1){
+		$position = 0;
+		$pasa=true;
+	}else{
+		$position = ($urlpage-1)*5;
+		$pasa=false;
+	}
+	$page=$viewtopostinprofile->vtpip($position,$position+5);//carga los datos a $page
+	for ($x=0; $x<5; $x++){
+		if(empty($page[$x][0])){//rompe el bucle, evita que se creen publicaciones vacias
+			$boo=$x;
+			$end="end";
+			$x=6;
+			break;	
+		}else{
+			$end="";
+		}
+	}
+	if($pasa==false){
+		$page=$viewtopostinprofile->vtpip($boo,$boo+5);
+	}else{
+		$boo=5;
+	}
+	if($end=="end"){//fin if
+		echo "end";//para que el lado del cliente se fije que ya no hay publicaciones
+		$end="";
+	}
+	for ($x=0; $x<$boo; $x++) {	
+	if(!empty($page)){
+	
+		if(empty($page[$x][1])){//rompe el bucle, evita que se creen publicaciones vacias
+			$x=6;
+			return false;
+		} 
+		if(strlen($page[$x][2])>=320){ //si el parrafo pasa los n numeros de caracteres lo corta
+			$page[$x][2]=substr($page[$x][2],0,320);
+			$page[$x][2]=$page[$x][2] . "... <a href='#' class='enlacessincolor'>Ver mas</a>";
+                					
+		}
  ?>
-<table width="100%" align="center" style="background-color: whitesmoke">
-	<tr>
-		<td>
-			<img src="/src/img/backgrounds/background2.jpg" alt="ejemplo" width="200px">
-		</td>
-		<td>
-			<table width="100%">
-				<tr>
-					<td>
-						<a href="/view/profile/viewtopost.php?idurlpost=1" class="enlacesconcolor"><h3><?php echo $page[$x][1];?><!--title--></h3></a>
-					</td>
-				</tr>
-				<tr>
-					<td><span><?php echo $page[$x][2];?></span></td>
-				</tr>
-				<tr>
-					<td style="background-color: var(--secondcolor)">
-						<i class="ri-dislike-fill"></i><i class="ri-dislike-fill"></i><button>Comentar</button>
-					</td>
-				</tr>
-			</table>
-		</td>
-	</tr>
-</table>
-<?php } ?>
+ <tr>
+	<td>
+		<table width="100%" align="center" style="background-color: whitesmoke"  class="posttable">
+			<tr>
+				<td width="30%">
+					<img src="/src/img/backgrounds/background2.jpg" alt="ejemplo" width="200px">
+				</td>
+				<td width="70%">
+					<table width="100%">
+						<tr>
+							<td>
+								<a href="/view/profile/viewtopost.php?idurlpost='<?php echo $page[$x][0]?>'" class="enlacesconcolor"><h3><?php echo $page[$x][1];?><!--title--></h3></a>
+							</td>
+						</tr>
+						<tr>
+							<td width="100%"><span><?php echo $page[$x][2];?></span></td>
+						</tr>
+						<tr>
+							<td align="center">
+								<div class="commentandreactions">
+									<i class="ri-dislike-fill"></i><i class="ri-dislike-fill"></i><button>Comentar</button>
+								</div>
+							</td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+		</table>
+	</td>
+</tr>
+<?php
+	}//fin for
+	
+	}
+	
+
+ ?>

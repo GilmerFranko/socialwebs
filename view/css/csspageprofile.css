@@ -63,3 +63,8 @@
 			font-size:38px;
 			color:var(--textcolor);
 		}
+		.commentandreactions{
+			border: none;
+			width: 70%;
+			background-color:var(--secondcolor);
+		}

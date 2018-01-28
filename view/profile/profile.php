@@ -14,22 +14,26 @@
 		
 	</style>
 	<script>
-		var pagina=0;
+		var pagina=1;
 		$(document).ready(function() {
 			cargardatos();	
 		});
 		function cargardatos(){
   			$.get("/view/profile/viewtopostinprofile.php?urlpage="+pagina,
    				function(data){
-    				if (data != "") {
+    				if (data != "" & data !="end") {
      					$(".beforeafter:last").before(data); 
-    			}
+    				}
+    				if (data == "end") {
+    					$(".beforeafter:last").before("<span class='info'>Vaya... Ya no hay que mostrar!</span");
+    				}
    			});				
 		}
 		$(window).scroll(function(){
 			if ($(window).scrollTop() == $(document).height() - $(window).height()){
 				pagina++;
 				cargardatos();
+				alert(pagina);
 			}					
 		});
 	</script>
@@ -199,32 +203,10 @@
 											<p class="info"> GilmerF ha hecho una nueva publicacion</p>
 										</td>
 									</tr>
+									<tr class="beforeafter">
 										<td>
-											<table width="100%" align="center" style="background-color: whitesmoke">
-												<tr>
-													<td>
-														<img src="/src/img/backgrounds/background2.jpg" alt="ejemplo" width="200px">
-													</td>
-													<td>
-														<table width="100%">
-															<tr>
-																<td>
-																	<a href="/view/profile/viewtopost.php?idurlpost=1" class="enlacesconcolor"><h3>Nueva Version </h3></a>
-																</td>
-															</tr>
-															<tr>
-																<td>esta nueva version trae para ustedes mucho contenido</td>
-															</tr>
-															<tr>
-																<td style="background-color: var(--secondcolor)">
-																	<i class="ri-dislike-fill"></i><i class="ri-dislike-fill"></i><button>Comentar</button>
-																</td>
-															</tr>
-														</table>
-													</td>
-												</tr>
-											</table>
-											<tr class="beforeafter"></tr>
+											
+											<tr class=""></tr>
 										</td>
 									</tr>
 								</table>

@@ -10,7 +10,7 @@
 			$owner=$_POST['owner'];
 			$contentpost=$_POST['contentpost'];
 			//falta agregar seguridad pero bueno vamos probando
-			$sql = ("INSERT INTO usersposts(title, content, owner, likes, dislikes, comments, views, img, list) VALUES ('$title','$content',$owner,0,0,0,0,'img', 1)") ;
+			$sql = ("INSERT INTO usersposts(title, content, owner, likes, dislikes, comments, views, img, list) VALUES ('$title','$contentpost',$owner,0,0,0,0,'img', 1)") ;
 			$resultado=$this->conexionBase->query($sql);
 			if($resultado){
 				echo "bien";
