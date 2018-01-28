@@ -8,5 +8,6 @@ RewriteRule ^register$  /view/register.php [L]
 RewriteRule ^profile$ view/profile/profile.php [L]
 RewriteRule ^profile/websites$  /view/profile/websites.php [L]
 RewriteRule ^profile/websites/add$  /view/profile/addwebsite.php [L]
+RewriteRule ^logout$  /view/profile/logout.php [L]
 
 

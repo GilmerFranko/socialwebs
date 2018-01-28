@@ -14,7 +14,7 @@
 			width: 80%;
 		}
 		.bar2{
-			background-color:black;
+			background-color:#025a52;
 			font-family: Verdana, Geneva, sans-serif;
 			font-size: 16px;
 			font-style: normal;
@@ -29,7 +29,7 @@
 			border-left-style: none;
 			border-top-color: orange;
 			border-right-color: orange;
-			border-bottom-color: orange;
+			border-bottom-color: #00ccc1;
 			border-left-color: orange;
 			-webkit-transition: all .3s;
 			-moz-transition: all .3s;
@@ -44,6 +44,22 @@
 			font-family:Verdana, Geneva, sans-serif;
 			font-style:normal;
 		}
+		.socialnets{<
+			text-decoration:none;
+			font-family:Verdana, Geneva, sans-serif;
+			font-style:normal;
+			font-size:48px;
+		}
+		.iconwhatsapp{
+			color:green;
+		}
+		.stateverify{
+			text-decoration:none;
+			font-family:Verdana, Geneva, sans-serif;
+			font-style:normal;
+			font-size:38px;
+			color:white;
+		}
 	</style>
 </head>
 <body>
@@ -56,11 +72,10 @@
 	include_once($_SERVER['DOCUMENT_ROOT']."/model/dateprofile.php");#incluir dateprofile
 	$data=new dateprofile();
 	$data->getdateprofile($_SESSION['id']); #enviarle como parametros el id del usuario
-	echo $data->pictureprofile;
 	 ?>
 	<section class="section" align="center">
-		<table cellspacing="0" class="contain" width="100%">
-			<table cellspacing="0" class="bar2" width="100%">
+		<table cellspacing="3" class="contain" width="100%">
+			<table cellspacing="3" class="bar2" width="100%">
 				<tr>
 					<td><a href="#" class="enlaces2bar">Perfil</a></td>
 					<td><a href="/profile/websites" class="enlaces2bar">Sitios Webs</a></td>
@@ -69,51 +84,54 @@
 				</tr>
 			</table>
 			<tr>
-				<table cellspacing="0" width="100%">
+				<table cellpadding="0">
 					<tr>
-						<td width="15%">
-							<table>
+						<td width="30%">
+							<table class="prueba" cellpadding="0">
+								<tr style="background-color:black;">
+									<td><div id="photoandverify"><img src="<?php echo $data->pictureprofile;?>"alt="perfil" width="200px"><!--agg foto perfil--></td><td><a href="#" class="stateverify"><i class="ri-whatsapp-fill"></a></i><br><a href="#" class="stateverify"><i class="ri-facebook-box-fill stateverify"></i></a><br><a href="#" class="stateverify"><i class="ri-twitter-fill stateverify" ></i></a></div></td><!--agg las redes sociales-->
+								</tr>
 								<tr>
-									<td><img src="<?php echo $data->pictureprofile;?>"alt="perfil" width="120px"><!--agg foto perfil--></td><td><a href="#"><i class="ri-whatsapp-fill"></a></i><br><a href="#"><i class="ri-facebook-box-fill"></i></a><br><a href="#"><i class="ri-twitter-fill"></i></a></td><!--agg las redes sociales-->
+									<td class="socialnets"><a href="#"><i class="ri-whatsapp-fill iconwhatsapp"></i></a><a href="#"><i class="ri-whatsapp-fill iconfacebook"></i></a><a href="#"><i class="ri-whatsapp-fill icongithub"></i></a></td>
 								</tr>
 							</table>
 						</td>
-						<td width="85%">
-							<table cellspacing="0" cellspacing="0"style="background-color:white;" width="100%">
+						<td width="100%">
+							<table style="background-color:white;" width="100%">
 								<tr>
 									<td>
-										<p>ID de usuario</p>
-										<p class="info"><?php echo $data->id;?></p>
+										<span>ID de usuario</span>
+										<br>
+										<span class="info"><?php echo $data->id;?></span>
 									</td>
 								</tr>
 								<tr>
 									<td>
-										<p>Nombre</p>
-										<p class="info"><?php echo $data->name;?></p>
+										<span>Nombre</span>
+										<br>
+										<span class="info"><?php echo $data->name;?></span>
 									</td>
 								</tr>
 								<tr>
 									<td>
-										<p>Nick</p>
-										<p class="info"><?php echo $data->nick;?></p>
+										<span>Nick</span>
+										<br>
+										<span class="info"><?php echo $data->nick;?></span>
 									</td>
 
 								</tr>
 								<tr>
 									<td>
-										<p>Email</p>
-										<p class="info"><?php echo $data->email;?></p>
+										<span>Nick</span>
+										<br>
+										<span class="info"><?php echo $data->email;?></span>
 									</td>
-								</tr>
-								<tr>
-									<td>
-										<p>Contraseña</p>
-										<p class="info"><?php echo password_verify($data->pass);?></p>
-									</td>
-
 								</tr>
 							</table>
 						</td>
+					</tr>
+					<tr>
+						<td colspan="2"> Hola</td>
 					</tr>
 				</table>
 			</tr>

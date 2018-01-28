@@ -1,5 +1,5 @@
 <?php 
-	require_once("configBase.php");
+	require_once($_SERVER["DOCUMENT_ROOT"]."/model/configbase.php");
 	class Conexion{
 		protected $conexionBase;
  		public function Conexion(){

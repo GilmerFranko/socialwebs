@@ -2,6 +2,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" href="/view/css/tablestyles.css">
+<link rel="stylesheet" href="/view/css/reglasgenerales.css">
 <script src="/view/script/jquery-3.4.1.min.js"></script>
 <title>Registrar</title>
 
@@ -25,7 +27,7 @@
 		});
 		function addbuttonfile(){
 			$("#botonfuncional").click()
-			/* Asigna las funciones del ‘botonfuncional’ al input  identificado como ‘botonadjuntararchivo’ */
+			/* Asigna las funciones del ‘botonfuncional’ al input class="inputtext"  identificado como ‘botonadjuntararchivo’ */
 			$("#botonadjuntararchivo").click(function() {
 				$("#botonfuncional").click()
 			});
@@ -75,14 +77,14 @@ body {
 }
 </style>
 </head>
-<body bgcolor="#f3f3f3">
+<body>
  <?php
     include_once($_SERVER['DOCUMENT_ROOT']."/model/sqlregister.php");
     $register=new register();
     $register->registeruser();
    ?>
-<img src="/src/img/background/background.jpg" width="100%" height="150%" style="position:absolute;filter:blur();">
-<table width="100%" height="cool" border="0">
+<!--<img src="/src/img/background/background.jpg" width="100%" height="150%" style="position:absolute;filter:blur();">-->
+<table width="100%" height="cool" border="0" class="tablecss">
 	<form method="post" enctype="multipart/form-data">
 	  <tr>
 	    <th height="43" colspan="4" scope="col">&nbsp;</th>
@@ -98,7 +100,7 @@ body {
 	        </tr>
 	     <tr>
 	        <td colspan="2" scope="row">
-	          <input type="text" name="name" id="correologin" placeholder="" />
+	          <input class="inputtext" type="text" name="name" id="correologin" placeholder="" />
 	          <p></p>
 	        </td>
 	     </tr>
@@ -107,7 +109,7 @@ body {
 	        </tr>
 	      <tr>
 	        <td height="47" colspan="2" scope="row">
-	          <input type="text" name="nickname" id="nickname" placeholder />
+	          <input class="inputtext" type="text" name="nickname" id="nickname" placeholder />
 	        </td>
 	        </tr>
 	        <tr>
@@ -120,7 +122,7 @@ body {
 	        </tr>
 	      <tr>
 	        <td height="47" colspan="2" scope="row">
-	          <input type="text" name="email" id="email" placeholder />
+	          <input class="inputtext" type="text" name="email" id="email" placeholder />
 	          <p id="infoemail"></p>
 	        </td>
 	        </tr>
@@ -129,20 +131,20 @@ body {
 			</tr>
 	      <tr>
 	        <td height="47" colspan="2" scope="row">
-	          <input type="password" name="pass" id="passwordlogin" placeholder />
+	          <input class="inputtext" type="password" name="pass" id="passwordlogin" placeholder />
 	        </td>
 			</tr>
 			<tr>
 	        	<td height="47" colspan="2" scope="row">
-				<input type="button" id="botonadjuntararchivo" value="Foto de perfil">
-	          	<input type="file" name="pictureprofile" id="botonfuncional" accept="image/png, .jpeg, .jpg" style="display:none;"/></td>
+				<input class="inputtext" type="button" id="botonadjuntararchivo" value="Foto de perfil">
+	          	<input class="inputtext" type="file" name="pictureprofile" id="botonfuncional" accept="image/png, .jpeg, .jpg" style="display:none;"/></td>
 			</tr>
 	      <tr>
 	      <td height="38" scope="row">
-	        <input type="checkbox" name="saveuser" id="saveuser" />
+	        <input class="inputtext" type="checkbox" name="saveuser" id="saveuser" />
 	        <label for="saveuser">Logearme al registrarme</label>
 	     </td>
-	        <td colspan="2"><input name="button" type="submit" class="boton" id="button" value="Entrar" /></td>
+	        <td colspan="2"><input class="inputtext" name="button" type="submit" class="boton" id="button" value="Entrar" /></td>
 	        </tr>
 	        <tr><th>¿Estas registrado?<a href="/view/register.php">Inicia Session aqui</a></th></tr>
 	    </table></td>

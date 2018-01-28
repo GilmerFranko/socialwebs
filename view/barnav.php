@@ -4,16 +4,17 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>barnav</title>
 <link href="/src/icomoon/style.css" rel="stylesheet" type="text/css" />
-<link href="/view/reglasgenerales.css" rel="stylesheet" type="text/css" />
+<link href="/view/css/reglasgenerales.css" rel="stylesheet" type="text/css" />
+<link href="/view/css/allcolors.css" rel="stylesheet" type="text/css" />
 <style type="text/css">
 #barnav {
-	background-color: #007a9e;
+	/*background: -webkit-linear-gradient(var(--primarycolor) 80%,var(--secondcolor));*/
+	background-color: var(--primarycolor);
+  /*007a9ecolorimportante!*/
 	font-family: Verdana, Geneva, sans-serif;
 	font-size: 16px;
 	font-style: normal;
 	text-align: center;
-	border-top-width: medium;
-	border-right-width: medium;
 	border-bottom-width: medium;
 	border-left-width: medium;
 	border-top-style: none;
@@ -22,7 +23,7 @@
 	border-left-style: none;
 	border-top-color: #999;
 	border-right-color: #999;
-	border-bottom-color: #999;
+	border-bottom-color: var(--secondcolor);
 	border-left-color: #999;
 	-webkit-transition: all .3s;
 	-moz-transition: all .3s;
@@ -41,6 +42,7 @@
 }
 #barbusqueda {
 	border-radius: 0px;
+	background-color: var(--secondcolor);
 }
 #formbuscar {
 	font-family: Verdana, Geneva, sans-serif;
@@ -70,7 +72,6 @@
 	font-family: Verdana, Geneva, sans-serif;
 	font-size: 12px;
 	font-style: italic;
-	border: thin none #000;
 	-webkit-transition: all .3s ease-in-out;
 	-moz-transition: all .3s ease-in-out;
 	-ms-transition: all .3s ease-in-out;
@@ -118,7 +119,6 @@
 	font-family: Verdana, Geneva, sans-serif;
 	font-size: 12px;
 	font-style: italic;
-	border: thin none #000;
 	-webkit-transition: all .3s ease-in-out;
 	-moz-transition: all .3s ease-in-out;
 	-ms-transition: all .3s ease-in-out;
@@ -138,7 +138,7 @@ a:active {
 	color: #06C;
 }
 .enlacesconcolorbar{
-	font-size:18px;
+	font-size:17px;
 	color:white;
 	text-decoration:none;
 	font-style:normal;
@@ -147,29 +147,43 @@ a:active {
 .iconbar{
 	font-style:normal;
 	text-decoration:none;
-	color:orange;
-	font-size:28px;
+	color:white;
+	font-size:30px;
+	display: block;
+}
+.buttonsearch{
+	width:100%;
+	font-size:20px;
+	background-color:var(--seconcolor);
+	border:none;
+	color:white;
+}
+li{
+	list-style: none;
+}
+a{
+	display: block;
 }
 </style>
 </head>
 <body bgcolor="#F3F3F3" link="#000066">	
 <table width="100%" border="0" align="center" cellspacing="0" id="barnav">
   <tr>
-    <td width="14%" height="42"><span class="icon-wb_shade foticon iconbar"></span><a href="index" class="enlacesconcolorbar">Inicio</a></td>
-    <td width="39%" id="barbusqueda"><form id="form2" name="form2" method="post" action="">
+    <td width="14%" height="42"><li><span class="icon-wb_shade foticon iconbar"></span><a href="index" class="enlacesconcolorbar">Inicio</a></li></td>
+    <td width="39%" id="barbusqueda">
       <div style="border:none">
         <label for="formbuscar"></label>
         <table width="100%" border="0" cellpadding="0" cellspacing="0">
           <tr>
             <td width="239"><input name="formbuscar" type="text" class="barrabuscar" id="formbuscar" style="width:95%"/></td>
-            <td width="53"><button name="formbuscar" class="barrabuscar" id="barrabuscar" style="width:100%;font-size:20px;color:gray;"><span class="icon-search fonticon"></span></button></td>
+            <td width="53"><button name="buttonsearch" class="buttonsearch"><span class="icon-search"></span></button></td>
           </tr>
         </table>
       </div>
     </form></td>
-    <td width="21%"><span class="icon-add_alert foticon iconbar"></span><a href="/notifications" class="enlacesconcolorbar" style="">Notificacionees</a></td>
-    <td width="8%"><span class="icon-person foticon iconbar"></span><a href="/profile" class="enlacesconcolorbar" style="">Perfil</a></td>
-    <td width="18%"><span class="icon-logout foticon iconbar"></span><a href="#" class="enlacesconcolorbar" style="">Salir</a></td>
+    <td width="21%"><li><span class="icon-add_alert foticon iconbar"></span><a href="/notifications" class="enlacesconcolorbar" style="">Notificacionees</a></li></td>
+    <td width="8%"><li><span class="icon-person foticon iconbar"></span><a href="/profile" class="enlacesconcolorbar" style="">Perfil</a></li></td>
+    <td width="18%"><li><span class="icon-logout foticon iconbar"></span><a href="/logout" class="enlacesconcolorbar" style="">Salir</a></li></td>
   </tr>
 </table>
 </body>

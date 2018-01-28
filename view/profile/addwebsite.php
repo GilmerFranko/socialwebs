@@ -121,7 +121,7 @@
                         <span class="enlacessincolor">https://www.</span>
                     </td>
                     <td>
-                        <input  class="inputtext"text" type="text" name="url" id="url" focus="false">
+                        <input  class="inputtext" type="text" name="url" id="url" focus="false">
                     </td>
                 </tr>
                 <tr>
