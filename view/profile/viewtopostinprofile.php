@@ -91,50 +91,49 @@
 			$x=6;
 			return false;
 		} 
-		if(strlen($page[$x][2])>=320){ //si el parrafo pasa los n numeros de caracteres lo corta
-			$page[$x][2]=substr($page[$x][2],0,320);
-			$page[$x][2]=$page[$x][2] . "... <a href='#' class='enlacessincolor'>Ver mas</a>";
+		if(strlen($page[$x][3])>=320){ //si el parrafo pasa los n numeros de caracteres lo corta
+			$page[$x][3]=substr($page[$x][3],0,320);
+			$page[$x][3]=$page[$x][3] . "... <a href='#' class='enlacessincolor'>Ver mas</a>";
                 					
 		}
  ?>
- <tr class="trpostprofile">
-	<td>
-		<table width="100%" align="center" style="background-color: whitesmoke"  class="posttable">
-			<tr>
-				<td width="30%">
-					<img src="/src/img/backgrounds/background2.jpg" alt="ejemplo" width="200px">
-				</td>
-				<td width="70%">
-					<table width="100%">
-						<tr>
-							<td>
-								<a href="/view/profile/viewtopost.php?idurlpost='<?php echo $page[$x][0]?>'" class="enlacesconcolor"><h3><?php echo $page[$x][1];?><!--title--></h3></a>
-							</td>
-						</tr>
-						<tr>
-							<td width="100%"><span><?php echo $page[$x][2];?></span></td>
-						</tr>
-						<tr>
-							<td align="center">
-								<div class="commentandreactions">
-									<i class="ri-dislike-fill" id="<?php echo 'like'.$page[$x][0];?>" onclick="liked(<?php echo $page[$x][1];?>,<?php echo $page[$x][0]?>)">
-										<?php
-										 	$getsetlikes->getnumlikesof($page[$x][1],$page[$x][0]);
-											echo $getsetlikes->devuelvenumfila; 
-										?>
-										
-									</i><!--imprime los like que lleva esta publicacion-->
-									<i class="ri-dislike-line" id="unlike"></i><button>Comentar</button>
+ <div class="row">
+ 	<div class="col-lg-4">
+		<a href="/view/profile/viewtopost.php?idurlpost='<?php echo $page[$x][0]?>'" class="enlacesconcolor"><h3><?php echo $page[$x][2];?><!--title--></h3></a>
+	</div>
+</div>
+<div class="row">
+	<div class="col-lg-4">
+		<img src="/src/img/backgrounds/background2.jpg" alt="ejemplo" width="100%	">
+	</div>
+<div class="row">
+	<div class="col-lg-4">
+		<span><?php echo $page[$x][3];?></span>
+	</div>
+</div>
+<div class="row">
+	<div class="col-lg-4">
+		<div class="commentandreactions" width="100%" align="center">
+			<i class="ri-dislike-fill ilike" id="<?php echo 'like'.$page[$x][0];?>" onclick="liked(<?php echo $page[$x][1];?>,<?php echo $page[$x][0]?>)">
+						<!--con este script system podra saber que icono poner segun si es like o no-->
+				<script>
+					$(document).ready(function() {
+						liked(<?php echo $page[$x][1];?>,<?php echo $page[$x][0]?>)
+					});
+				</script>
+				<?php
+				 	$getsetlikes->getnumlikesof($page[$x][1],$page[$x][0]);
+					echo $getsetlikes->devuelvenumfila; 
+				?>
+						
+				</i><!--imprime los like que lleva esta publicacion-->
+				<i class="ri-dislike-line" id="unlike"></i><button>Comentar</button>
+		</div>
+	</div>
+</div>
 
-								</div>
-							</td>
-						</tr>
-					</table>
-				</td>
-			</tr>
-		</table>
-	</td>
-</tr>
+	
+
 <?php
 	}//fin for
 	

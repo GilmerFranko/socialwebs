@@ -64,10 +64,22 @@
 			color:var(--textcolor);
 		}
 		.commentandreactions{
+			color:var(--textcolor);
 			border: none;
-			width: 70%;
 			background-color:var(--secondcolor);
 		}
 		.trpostprofile{
 			padding: 4px 0;
+		}
+		.photoandverify{
+			border:solid 1px #D2D2D2;
+		}
+		.posttable{
+			border-bottom-width: medium;
+			border-top-width: medium;
+			border-top-style: solid;
+			border-bottom-style: solid;
+			border-top-color:var(--secondcolor);
+			border-bottom-color:var(--secondcolor);
+			margin-bottom: 30px;
 		}

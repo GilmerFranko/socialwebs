@@ -8,6 +8,7 @@
 	<link rel="stylesheet" href="/view/css/tablestyles.css">
 	<link rel="stylesheet" href="/src/fonts/remixicon.css">
 	<link rel="stylesheet" href="/view/css/csspageprofile.css">
+	<link rel="stylesheet" href="/src/bootstrap4/css/bootstrap.min.css">
 	<script src="/view/script/jquery-3.4.1.min.js"></script>
 	<script src="/view/script/getsetreactions.js"></script>
 	<title>Perfil</title>
@@ -78,7 +79,8 @@
 		echo "string";
 	}
 	?>
-	<section class="section" align="center">
+	<section class="section" align="">
+		<div class="container">
 		<table cellspacing="3" class="containprofile" width="100%" border="0">
 			<tr>
 				<td>
@@ -87,155 +89,127 @@
 							<td><a href="#" class="enlaces2bar">Perfil</a></td>
 							<td><input type="text" placeholder="Buscar en este perfil"></td>
 							<td><a href="/profile/websites" class="enlaces2bar">Sitios Webs</a></td>
-							<td><a href="#" class="enlaces2bar">Opiniones</a></td>
+							<td><a href="/view/profile/opinions(prueba).php" class="enlaces2bar">Opiniones</a></td>
 							<td><a href="#" class="enlaces2bar">Informacion</a></td>
 							<td><a href="profile/settings" class="enlaces2bar">Mas</a></td>
 						</tr>
 					</table>
 				</td>
 			</tr>
-			<tr>
-				<td>
-					<table cellpadding="0" width="100%">
-						<tr>
-							<td width="30%">
-								<table class="prueba" cellpadding="0">
-									<tr>
-										<td>
-											<div id="photoandverify">
-												<img src="<?php echo $data->pictureprofile;?>"alt="perfil" width="200px" onclick="showinfoimg(<?php echo $data->pictureprofile;?>)">
-												<input type="file" file="<?php echo $data->pictureprofile;?>">
-												
-												<!--agg foto perfil-->
-											</div>
-										</td>
-										<td>
-											<a href="#" class="stateverify">
-												<i class="ri-whatsapp-fill">
-												</i>
-											</a>
-												<br>
-												<a href="#" class="stateverify">
-													<i class="ri-facebook-box-fill stateverify">	
-													</i>
-												</a>
-												<br>
-												<a href="#" class="stateverify">
-													<i class="ri-twitter-fill stateverify" >
-														
-													</i>
-												</a>
-											
-										</td><!--agg las redes sociales-->
-									</tr>
-									<tr>
-										<td>
-											<a href="#" class="socialnets"><span class="ri-whatsapp-fill iconwhatsapp"></span></a>
-											<a href="#" class="socialnets"><span class="ri-facebook-box-fill iconfacebook"></span></a>
-											<a href="#" class="socialnets"><span class="ri-github-fill icongithub"></span></a>
-										</td>
-										<td>
-											<i class="ri-messenger-fill"></i>
-										</td>	
-									</tr>	
-								</table>
-							</td>
-							<td width="100%">
-								<table style="background-color:white;" width="100%">
-									<tr>
-										<td>
-											<span>Nombre</span>
-											<br>
-											<span class="info"><?php echo $data->name;?></span>
-										</td>
-									</tr>
-									<tr>
-										<td>
-											<span>Nick</span>
-											<br>
-											<span class="info"><?php echo $data->nick;?></span>
-										</td>
-
-									</tr>
-									<tr>
-										<td>
-											<span>Web Fijada</span>
-											<br>
-											<span class="info"><?php echo $data->email;?></span>
-										</td>
-									</tr>
-									<tr>
-										<td>
-											<span>Empresa</span>
-											<br>
-											<span class="info">DevJent</span>
-										</td>
-									</tr>
-									<tr>
-										<td>
-											<span class="ri-information-line">Puedes observar nuestras publicaciones de una forma ordenada <a href="#">aquí</a></span>
-										</td>
-									</tr>
-								</table>
-							</td>
-						</tr>
-						<tr>
-							<td colspan="2">
-								<table id="tableposts" width="100%" cellpadding="30">
-									<tr>
-										<td colspan="2">
-											<table id="tablemakepost">
-												<form action="" id="formtopost" method="post">
-													<tr>
-														<td>
-															<span class="info">Titulo</span>
-														</td>
-													</tr>
-														<tr>
-															<td>
-																<input type="text" name="titlepost" placeholder="">
-																<input type="hidden" name="userid" value="<?php echo $_SESSION['id'];?>">
-															</td>
-														</tr>
-														<tr>
-															<td>
-																<span class="info">Escribe tu post aqui</span>
-															</td>
-														</tr>
-														<tr>
-															<td>
-																<textarea name="contentpost" id="" cols="30" rows="10"></textarea>
-															</td>
-														</tr>
-														<tr>
-															<td>
-																<input type="submit" value="Publicar	">
-																<button>Adjuntar Archivos</button>
-															</td>
-
-														</tr>
-													</form>
-											</table>
-										</td>
-									</tr>
-									<tr>
-										<td>
-											<p class="info"> GilmerF ha hecho una nueva publicacion</p>
-										</td>
-									</tr>
-									<tr class="beforeafter">
-										<td>
-											
-											<tr class=""></tr>
-										</td>
-									</tr>
-								</table>
-							</td>
-						</tr>
-					</table>
-				</td>
-			</tr>
 		</table>
+				<div class="row">
+					<div class="col-lg-4">
+						<img src="<?php echo $data->pictureprofile;?>"alt="perfil" width="250px" onclick="showinfoimg(<?php echo $data->pictureprofile;?>)"/>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-lg-4">
+						<a href="#" class="socialnets"><span class="ri-whatsapp-fill iconwhatsapp"></span></a>
+						<a href="#" class="socialnets"><span class="ri-facebook-box-fill iconfacebook"></span></a>
+						<a href="#" class="socialnets"><span class="ri-github-fill icongithub"></span></a>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-lg-4">
+						<form action="" id="formtopost" method="post">
+							<span class="info">Title</span><br>
+							<input type="text" name="titlepost" placeholder=""><br>
+							<input type="hidden" name="userid" value="<?php echo $_SESSION['id'];?>"><br>
+							<span class="info">Think it and Write it</span><br>
+							<textarea name="contentpost" id="" cols="27" rows="10"></textarea><br>
+							<input type="submit" value="Publicar	">
+							<button>Adjuntar Archivos</button>
+						</form>
+					</div>
+					</div>
+					<div style="" align="center" >
+						<span class="beforeafter"></span>
+					</div>
+		<div class="container">
+    <div class="row">
+      <div class="col-xl-4"  style="background-color:#aaa">
+        <h1>Columna 1</h1> 
+        <p>Esto es una prueba de bootstrap.</p>
+      </div>
+      <div class="col-xl-4"  style="background-color:#bbb">
+        <h1>Columna 2</h1> 
+        <p>Esto es una prueba de bootstrap.</p>
+      </div>
+      <div class="col-xl-4"  style="background-color:#ccc">
+        <h1>Columna 3</h1> 
+        <p>Esto es una prueba de bootstrap.</p>
+      </div>
+    </div>
+
+    <hr>
+  
+    <div class="row">
+      <div class="col-lg-4"  style="background-color:#aaa">
+        <h1>Columna 1</h1> 
+        <p>Esto es una prueba de bootstrap.</p>
+      </div>
+      <div class="col-lg-4"  style="background-color:#bbb">
+        <h1>Columna 2</h1> 
+        <p>Esto es una prueba de bootstrap.</p>
+      </div>
+      <div class="col-lg-4"  style="background-color:#ccc">
+        <h1>Columna 3</h1> 
+        <p>Esto es una prueba de bootstrap.</p>
+      </div>
+    </div>
+
+    <hr>
+
+    <div class="row">
+      <div class="col-md-4"  style="background-color:#aaa">
+        <h1>Columna 1</h1> 
+        <p>Esto es una prueba de bootstrap.</p>
+      </div>
+      <div class="col-md-4"  style="background-color:#bbb">
+        <h1>Columna 2</h1> 
+        <p>Esto es una prueba de bootstrap.</p>
+      </div>
+      <div class="col-md-4"  style="background-color:#ccc">
+        <h1>Columna 3</h1> 
+        <p>Esto es una prueba de bootstrap.</p>
+      </div>
+    </div>
+
+    <hr>
+
+    <div class="row">
+      <div class="col-sm-4"  style="background-color:#aaa">
+        <h1>Columna 1</h1> 
+        <p>Esto es una prueba de bootstrap.</p>
+      </div>
+      <div class="col-sm-4"  style="background-color:#bbb">
+        <h1>Columna 2</h1> 
+        <p>Esto es una prueba de bootstrap.</p>
+      </div>
+      <div class="col-sm-4"  style="background-color:#ccc">
+        <h1>Columna 3</h1> 
+        <p>Esto es una prueba de bootstrap.</p>
+      </div>
+    </div>
+
+    <hr>
+
+    <div class="row">
+      <div class="col-lg-4"  style="background-color:#aaa">
+        <h1>Columna 1</h1> 
+        <p>Esto es una prueba de bootstrap.</p>
+      </div>
+      <div class="col-lg-4"  style="background-color:#bbb">
+        <h1>Columna 2</h1> 
+        <p>Esto es una prueba de bootstrap.</p>
+      </div>
+      <div class="col-lg-4"  style="background-color:#ccc">
+        <h1>Columna 3</h1> 
+        <p>Esto es una prueba de bootstrap.</p>
+      </div>
+    </div>
+
+  </div> 
 	</section>
 </body>
 </html>

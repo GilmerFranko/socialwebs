@@ -6,6 +6,7 @@
 <link href="/view/css/reglasgenerales.css" rel="stylesheet" type="text/css" />
 <link href="/view/css/allcolors.css" rel="stylesheet" type="text/css" />
 <link rel="shortcut icon" href="/favicn.png?v=<?php echo time() ?>" />
+	<link rel="stylesheet" href="/src/bootstrap4/css/bootstrap.min.css">
 <style type="text/css">
 #barnav {
 	/*background: -webkit-linear-gradient(var(--primarycolor) 80%,var(--secondcolor));*/
@@ -31,16 +32,14 @@
 	-o-transition: all .3s;
 	transition: all .3s;
 	border-radius: 0px;
-	position:fixed;
-	top:0;
-	left:0;
-	z-index:1;
+	color:var(--secondtextcolor);
 }
 .fonticon {
 	color: #E3E3E3;
 	font-size: 24px;
 }
 #barbusqueda {
+	padding: 7px;
 	border-radius: 0px;
 	background-color: var(--secondcolor);
 }
@@ -49,12 +48,11 @@
 	font-size: 30px;
 	font-style: bold;
 	height: 30px;
-	padding: 0;
+	padding: 4px 4px;
 	border:none;
 	outline:none;
 	color:gray;
 	font-size:14px;
-	padding-left:15px;
 	overflow:hidden;
 }
 #tablacontenido {
@@ -89,10 +87,6 @@
 	width: 100%;
 	overflow:hidden;
 }
-body,td,th {
-	font-family: Verdana, Geneva, sans-serif;
-	color: #333;
-}
 a {
 	font-style: italic;
 }
@@ -100,8 +94,8 @@ a:active {
 	color: #06C;
 }
 .enlacesconcolorbar{
-	font-size:17px;
-	color:var(--textcolor);
+	font-size:14px;
+	color:var(--secondtextcolor);
 	text-decoration:none;
 	font-style:normal;
 	font-family:verdana, Geneva, sans-serif;
@@ -109,16 +103,16 @@ a:active {
 .iconbar{
 	font-style:normal;
 	text-decoration:none;
-	color:var(--textcolor);
+	color:var(--secondtextcolor);
 	font-size:30px;
-	display: block;
+	display: inline-block;
 }
 .buttonsearch{
 	width:100%;
 	font-size:20px;
-	background-color:var(--seconcolor);
+	background-color:var(--secondcolor);
 	border:none;
-	color:var(--textcolor);
+	color:var(--secondtextcolor);
 }
 li{
 	list-style: none;
@@ -128,10 +122,84 @@ li{
 }*/
 </style>
 </head>
-<body bgcolor="#F3F3F3" link="#000066">	
+<body bgcolor="#F3F3F3" link="#000066">
+<div class="row fixed-top align-items-center" id="barnav">
+	<div class="col-lg-2">
+		<li>
+			<a class="enlacesconcolorbar" href="/index"><span class="ri-fire-fill iconbar"></span>New</a>
+		</li>
+	</div>
+	<div class="col-lg-4" id="barbusqueda">
+		<li>
+			<div class="row align-items-center">
+				<div class="col-lg-8">
+					<input type="text" class="barrabuscar" id="formbuscar">
+				</div>
+				<div class="col-lg-4">
+					<button class="buttonsearch"><span class="ri-search-fill " style="color:var(--textcolor)"></span></button>
+				</div>
+			</div>
+			
+		</li>
+	</div>
+	<div class="col-lg-2">
+		<li>
+			<a class="enlacesconcolorbar"  href="/notifications"><span class="ri-alert-fill iconbar"></span>Notifications</a>
+		</li>
+	</div>
+	<div class="col-lg-2">
+		<li>
+			<a class="enlacesconcolorbar"  href="/profile"><span class="ri-profile-fill iconbar"></span>Profile</a>
+		</li>
+	</div>
+	<div class="col-lg-2">
+		<li>
+			<a class="enlacesconcolorbar"  href="/logout"><span class="ri-logout-circle-fill iconbar"></span>Logout</a>
+		</li>
+	</div>
+</div>
+</nav>
+	<!--<div class="main">
+		<div class="row" id="barnav">
+			<div class="col-lg-2">
+				<li>
+					<a href="/index" class="iconbar"><span class="ri-fire-fill foticon iconbar"></span><a href="/index" class="enlacesconcolorbar">Inicio</a></a>
+				</li>
+			</div>
+			<div class="col-lg" id="barbusqueda">
+				<li>
+					<input name="formbuscar" type="text" class="barrabuscar" id="formbuscar" style="width:95%" placeholder="www.website.com" />
+					<button name="buttonsearch" class="buttonsearch"><span class="ri-search-fill" style="color:var(--primarycolor);"></span></button>
+				</li>
+			</div>
+			<div class="col-lg-2">
+				<li>
+					<a href="/notifications" class="iconbar">
+						<span class="ri-notification-fill foticon iconbar">
+						</span>
+						<a href="/notifications" class="enlacesconcolorbar" style="">Notificacionees</a>
+					</a>
+				</li>
+			</div>
+			<div class="col-lg-1">
+				<li>
+					<span class="ri-profile-fill iconbar">
+					</span>
+					<a href="/profile" cl-ass="enlacesconcolorbar" style="">Perfil</a>
+				</li>
+			</div>
+			<div class="col-lg-1">
+				<li>
+					<a href="/logout" class="iconbar">
+						<span class="ri-logout-circle-fill iconbar"></span>
+						<a href="/logout" class="enlacesconcolorbar" style="">Salir</a></a>
+				</li>
+			</div>
+		</div>
+	</div>	
 <table width="100%" border="0" align="center" cellspacing="0" id="barnav">
   <tr>
-    <td width="14%" height="42"><li><a href="/index" class="iconbar"><span class="ri-fire-fill foticon iconbar"></span><a href="/index" class="enlacesconcolorbar">Inicio</a></a></li></td>
+    <td width="14%" height="42"></td>
     <td width="39%" id="barbusqueda">
       <div style="border:none">
         <label for="formbuscar"></label>
@@ -147,6 +215,6 @@ li{
     <td width="8%"><li><span class="ri-profile-fill iconbar"></span><a href="/profile" class="enlacesconcolorbar" style="">Perfil</a></li></td>
     <td width="18%"><li><a href="/logout" class="iconbar"><span class="ri-logout-circle-fill iconbar"></span><a href="/logout" class="enlacesconcolorbar" style="">Salir</a></a></li></td>
   </tr>
-</table>
+</table>-->
 </body>
 </html>

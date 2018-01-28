@@ -26,7 +26,8 @@ section{
 
 }
 .enlacesconcolor{
-	color:#069;
+	color:var(--primarycolor);
+	/*#069;azulbonito*/
 	text-decoration:none;
 	font-family:Verdana, Geneva, sans-serif;
 }
