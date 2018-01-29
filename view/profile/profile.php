@@ -33,7 +33,6 @@
 			if ($(window).scrollTop() == $(document).height() - $(window).height()){
 				pagina++;
 				cargardatos();
-				alert(pagina);
 			}					
 		});
 	</script>
@@ -161,7 +160,7 @@
 						</tr>
 						<tr>
 							<td colspan="2">
-								<table id="tableposts" width="100%">
+								<table id="tableposts" width="100%" cellpadding="30">
 									<tr>
 										<td>
 											<table id="tabletopost">

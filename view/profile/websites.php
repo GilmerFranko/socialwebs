@@ -8,7 +8,7 @@
 	<link rel="stylesheet" href="/view/css/reglasgenerales.css">
 	<link rel="stylesheet" href="/view/css/tablestyles.css">
 	<link rel="stylesheet" href="/src/fonts/remixicon.css">
-	<title>Perfil</title>
+	<title>Sitios Webs</title>
 	<style>
 		.section{
 			left:10%;

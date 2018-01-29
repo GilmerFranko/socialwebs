@@ -5,17 +5,21 @@
 		public function construc(){
 			parent::__construct();
 		}
-		public function vtpip($minnumpage, $maxnumpage){
-			$sql = ("SELECT * FROM usersposts ORDER BY id DESC LIMIT $minnumpage,$maxnumpage") ;
+		public function vtpip($minnumpage, $maxnumpage, $idowner){
+			$sql = ("SELECT * FROM usersposts WHERE owner=$idowner ORDER BY id DESC LIMIT $minnumpage,$maxnumpage ") ;
 			$resultado=$this->conexionBase->query($sql);
-			if(mysqli_num_rows($resultado)>0){//si existe al menos una 
-				$a=0;
-				while($fila=$resultado->fetch_row()){//mientras exista recorra la fila
-					$this->devuelvefila[$a] =$fila;
-					$a++;
+			if ($resultado){
+				if(mysqli_num_rows($resultado)>0){//si existe al menos una 
+					$a=0;
+					while($fila=$resultado->fetch_row()){//mientras exista recorra la fila
+						$this->devuelvefila[$a] =$fila;
+						$a++;
+					}
 				}
+				return $this->devuelvefila;
+			}else{
+				echo "without result";
 			}
-			return $this->devuelvefila;
 		}
 	}
 	/*$sql = ("SELECT * FROM publicaciones ORDER BY id DESC limit 5") ;
@@ -44,7 +48,6 @@
 	$datauserpost=new dateprofile();
 	$datauserpost->getdateprofile($data->owner);
 	$viewtopostinprofile=new viewtopostinprofile();
-	
 ?>
 <?php
 	$pasa=true;
@@ -59,26 +62,26 @@
 		$position = ($urlpage-1)*5;
 		$pasa=false;
 	}
-	$page=$viewtopostinprofile->vtpip($position,$position+5);//carga los datos a $page
+	$page=$viewtopostinprofile->vtpip($position,$position+5,$datauser->id);//carga los datos a $page
 	for ($x=0; $x<5; $x++){
 		if(empty($page[$x][0])){//rompe el bucle, evita que se creen publicaciones vacias
 			$boo=$x;
 			$end="end";
-			$x=6;
+			$x=7;
 			break;	
 		}else{
 			$end="";
 		}
 	}
 	if($pasa==false){
-		$page=$viewtopostinprofile->vtpip($boo,$boo+5);
+		$page=$viewtopostinprofile->vtpip($position,$position+$boo,$datauser->id);
 	}else{
 		$boo=5;
 	}
-	if($end=="end"){//fin if
+	/*if($end=="end"){//fin if
 		echo "end";//para que el lado del cliente se fije que ya no hay publicaciones
 		$end="";
-	}
+	}*/
 	for ($x=0; $x<$boo; $x++) {	
 	if(!empty($page)){
 	
@@ -92,7 +95,7 @@
                 					
 		}
  ?>
- <tr>
+ <tr class="trpostprofile">
 	<td>
 		<table width="100%" align="center" style="background-color: whitesmoke"  class="posttable">
 			<tr>

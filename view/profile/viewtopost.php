@@ -92,7 +92,7 @@
 						</tr>
 						<tr>
 							<td>
-								<img src="/src/img/screenshot.png" width="60%" alt="">
+								<!--<img src="/src/img/screenshot.png" width="60%" alt="">-->
 								<?php if(!empty($data->img)){echo "";}?>
 							</td>
 						</tr>

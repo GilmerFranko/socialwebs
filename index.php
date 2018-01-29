@@ -15,19 +15,6 @@
 #barbusqueda {
 	background-color: var(--seconcolor);
 }
-#formbuscar {
-	font-family: Verdana, Geneva, sans-serif;
-	font-size: 18px;
-	font-style: italic;
-	height: 30px;
-	padding: 0;
-	border:none;
-	outline:none;
-	color:gray;
-	font-size:14px;
-	padding-left:15px;
-	overflow:hidden;
-}
 #tablacontenido {
 	border-radius: 8px;
 
@@ -70,13 +57,6 @@
 	transform: scale(0.95);
 	border-radius: 18px;
 	background-color: #CCC;
-}
-
-#barrabuscar {
-	height: 30px;
-	padding: 0;
-	margin-left: 0;
-	border: none;
 }
 .foticonprofile {
   color:var(--textcolor);

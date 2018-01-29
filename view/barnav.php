@@ -46,8 +46,8 @@
 }
 #formbuscar {
 	font-family: Verdana, Geneva, sans-serif;
-	font-size: 18px;
-	font-style: italic;
+	font-size: 30px;
+	font-style: bold;
 	height: 30px;
 	padding: 0;
 	border:none;
@@ -71,12 +71,6 @@
 	list-style-type: none;
 	line-height: normal;
 	margin: 0px;
-}
-#barrabuscar {
-	height: 30px;
-	padding: 0;
-	margin-left: 0;
-	border: none;
 }
 .precioyver {
 }
@@ -141,10 +135,10 @@ li{
     <td width="39%" id="barbusqueda">
       <div style="border:none">
         <label for="formbuscar"></label>
-        <table width="100%" border="0" cellpadding="0" cellspacing="0">
+        <table width="100%" border="0" cellpadding="4">
           <tr>
-            <td width="239"><input name="formbuscar" type="text" class="barrabuscar" id="formbuscar" style="width:95%"/></td>
-            <td width="53"><button name="buttonsearch" class="buttonsearch"><span class="ri-search-fill"></span></button></td>
+            <td width="239"><input name="formbuscar" type="text" class="barrabuscar" id="formbuscar" style="width:95%" placeholder="www.website.com" /></td>
+            <td width="53"><button name="buttonsearch" class="buttonsearch"><span class="ri-search-fill" style="color:var(--primarycolor);"></span></button></td>
           </tr>
         </table>
       </div>
