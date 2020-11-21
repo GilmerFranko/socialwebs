@@ -1,4 +1,4 @@
-<?php 
+<?php
 include_once($_SERVER['DOCUMENT_ROOT']."/model/conexionbase.php");
 		class dateprofile extends Conexion{
 			public $name;
@@ -7,7 +7,6 @@ include_once($_SERVER['DOCUMENT_ROOT']."/model/conexionbase.php");
 			public $pass;
 			public function dateprofile(){
 				parent::__construct();
-				
 			}
 			public function getdateprofile($id){
 					$sql = ("SELECT * FROM users  WHERE id='$id'");//si existe 
@@ -18,8 +17,6 @@ include_once($_SERVER['DOCUMENT_ROOT']."/model/conexionbase.php");
 							$this->email=$arrow['email'];
 							$this->nick=$arrow['nickname'];
 							$this->pass=$arrow['password'];
-
-					
 					}
 				}
 			}

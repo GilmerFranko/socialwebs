@@ -3,7 +3,10 @@ body {
 	background-color: #F3F3F3;
 	transition:all .2s;
 	font-family: roboto,Verdana;
-	
+	font-size: 18px;
+}
+section{
+	margin-top: 40px;
 }
 .boton {
 	background-color: #FC3;
@@ -27,7 +30,28 @@ body {
 	font-family:Verdana, Geneva, sans-serif;
 }
 .enlacessincolor{
-	color:black;
+	color:gray;
 	text-decoration:none;
 	font-family:Verdana, Geneva, sans-serif;
+}
+.inputtext {
+	font-family: Verdana, Geneva, sans-serif;
+	font-size: 18px;
+	font-style: italic;
+	height: 30px;
+	padding: 0;
+	border:none;
+	outline:none;
+	color:gray;
+	font-size:14px;
+	padding-left:15px;
+	overflow:hidden;
+	height: 30px;
+	padding: 0;
+	margin-left: 0;
+	border: none;
+}
+.info{
+	font-size: 14px;
+	color:gray;
 }

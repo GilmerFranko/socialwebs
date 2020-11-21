@@ -1,0 +1,9 @@
+.tablecss{
+    border-radius:8px;
+    background-color:gainsboro;
+    box-shadow: 1px 1px 8px -2px black;
+    padding:20px;
+}
+td{
+    background-color:blue;
+}

@@ -140,29 +140,9 @@ a:active {
 }
 </style>
 </head>
-<body bgcolor="#F3F3F3" link="#000066">	
-<table width="100%" border="0" align="center" cellspacing="0" id="barnav">
-  <tr>
-    <td width="14%" height="42"><a href="#" class="icon-wb_shade fonticon"></a></td>
-    <td width="39%" id="barbusqueda"><form id="form2" name="form2" method="post" action="">
-      <div style="border:none">
-        <label for="formbuscar"></label>
-        <table width="100%" border="0" cellpadding="0" cellspacing="0">
-          <tr>
-            <td width="239"><input name="formbuscar" type="text" class="barrabuscar" id="formbuscar" style="width:95%"/></td>
-            <td width="53"><button name="formbuscar" class="barrabuscar" id="barrabuscar" style="width:100%;font-size:20px;color:gray;"><span class="icon-search fonticon"></span></button></td>
-          </tr>
-        </table>
-      </div>
-    </form></td>
-    <td width="21%"><a href="#" class="icon-add_alert fonticon" style="font-size:24px"></a></td>
-    <td width="8%"><a href="#" class="icon-person fonticon" style="font-size:24px"></a></td>
-    <td width="18%"><a href="#" class="icon-logout fonticon" style="font-size:24px"></a></td>
-  </tr>
-</table>
-<p>1</p>
-<p></p>
-<p></p>
+<body bgcolor="#F3F3F3" link="#000066">
+  <?php 
+include_once($_SERVER['DOCUMENT_ROOT']."/view/barnav.php");?>
 <h1>Ventas y Precios</h1>
 <table width="100%" height="372" border="0" cellspacing="20" id="tablacontenido">
   <tr>
