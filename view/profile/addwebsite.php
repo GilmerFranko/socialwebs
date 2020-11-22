@@ -3,9 +3,13 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/src/icomoon/style.css" rel="stylesheet" type="text/css" />
 	<link rel="stylesheet" href="/view/css/reglasgenerales.css">
     <link rel="stylesheet" href="/view/css/tablestyles.css">
+    <link href="/src/icomoon/style.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="/src/amaran/dist/css/amaran.min.css">
     <script src="/view/script/jquery-3.4.1.min.js"></script>
+    <script src="/src/amaran/dist/js/jquery.amaran.min.js"></script>
 	<title>Agregar Sitio Web</title>
 	<style>
 		.section{
@@ -16,20 +20,32 @@
     </style>
 <script>
 		$(document).ready(function(){
-			$("#url").on('keyup',verifyurl);
-			$("#email").change(verifyemail);
+            $("#url").on('keyup',verifyurl);
+            $("#formweb").submit(function(){});
+            $("#formweb").submit(verifyurlrepeatinfo);
 			var a=$("#cantidad_compra").val();
-			var num=0;
-		});
+            var num=0;
+        });
+        $(function(){
+            if(location.hash=="#pageadded"){
+                $.amaran({
+                content:{
+                    title:'Aviso',
+                    message:'Pagina web agregada exitosamente!',
+                    info:$("#url").val(),
+                    icon:'icon-warning'
+                },
+                theme:'awesome ok'
+});
+            }
+        });
+        $("#formweb").submit(function(){return true;});
+                $("#formweb").submit();
 		function verifyurl(){
             var addhttps="https://"+$("#url").val();//agrega https:// antes de la url ingresada(evita errores)
             //alert(addhttps);
-            var formdate={url:addhttps};
+            var formdate={url:addhttps, option:'1'};
 			$.post("/model/profile/sqladdwebsite.php",	formdate, getdateurl);
-		}
-		function verifyemail(){
-			var formdate={Email:$("#email").val()};
-			$.get("/model/verifyemail.php",	formdate, getdateemail)
 		}
 		function getdateurl(getdates){
             //alert(getdates);
@@ -45,6 +61,18 @@
                 $("#url").css("border", "solid 1px green");
 				$("#infonick").css("color","red");
 				$("#infonick").text("Nick no disponible");
+            }
+        }
+        function verifyurlrepeatinfo(){
+            var addhttps="https://"+$("#url").val();//agrega https:// antes de la url ingresada(evita errores)
+            //alert(addhttps);
+            var formdates={url:addhttps, option:'2'};
+            $.post("/model/profile/sqladdwebsite.php",	formdates   , getdateurlinfo);
+        }
+        function getdateurlinfo(getdateinfo){
+            if (getdateinfo=="url added"){
+                location.assign("#pageadded");
+                location.reload();
             }
         }
 </script>
@@ -68,7 +96,7 @@
     ?>
 	<section class="section" align="center">
         <table class="tablecss">
-            <form action="<?php echo $_SERVER['PHP_SELF'];?>"  method="post">
+            <form  id="formweb" action="<?php echo $_SERVER['PHP_SELF'];?>"  method="post" on>
             <tr>
                 <td><p>Nombre Del Sitio</p></td>
                 <td>

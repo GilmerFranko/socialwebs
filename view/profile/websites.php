@@ -16,7 +16,7 @@
 	$data->getdateprofile($_SESSION['id']); #enviarle como parametros el id del usuario
 	 ?>
 	 <section class="section">
-        <a href="/view/profile/addwebsite.php" class="enlacesconcolor"> Agregar Pagina</a>
+        <a href="/profile/websites/add" class="enlacesconcolor"> Agregar Pagina</a>
         mis paginas agregadas
         paginas que sigo
         sugerencias

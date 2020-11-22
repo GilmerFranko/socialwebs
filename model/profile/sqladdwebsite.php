@@ -10,13 +10,13 @@ include_once($_SERVER['DOCUMENT_ROOT']."/model/conexionbase.php");
 				echo "<div style='display: none;'>";
 				$name=$_POST['name'];
 				$url=$_POST['url'];
-				$urlhttps="https://www.".$url; //este es el que servira para las comprobaciones
+				$urlhttps="https://".$url; //este es el que servira para las comprobaciones
                 $image=$_POST['image'];
 				$owner=$id;
 				echo "</div>";
 			   // Variable to check
 				// Remover los caracteres ilegales de la url
-				if(trim($url) == ''){
+				if(trim($urlhttps) == ''){
 					echo 'url empty';
 					return false;
 				}else{
@@ -40,6 +40,7 @@ include_once($_SERVER['DOCUMENT_ROOT']."/model/conexionbase.php");
 								}
 								$verifica=$this->conexionBase->query($sql);
 								if ($verifica){
+									echo "web added";
 								}else{
 								}
 							}
@@ -55,7 +56,8 @@ include_once($_SERVER['DOCUMENT_ROOT']."/model/conexionbase.php");
 
 ?>
 <?php
-if (!empty($_POST['url'])){
+if (!empty($_POST['option'])){
+if (!empty($_POST['url']) and $_POST['option']=="1"){
 	$url=$_POST['url'];
 	$conexion=mysqli_connect("localhost", "root", "");
 	mysqli_select_db($conexion, "bbdd_web");
@@ -82,5 +84,34 @@ if (!empty($_POST['url'])){
 			}
 		}
 
+}
+if (!empty($_POST['url']) and $_POST['option']=="2"){
+	$url=$_POST['url'];
+	$conexion=mysqli_connect("localhost", "root", "");
+	mysqli_select_db($conexion, "bbdd_web");
+	$sql = ("SELECT * FROM websites  WHERE url='$url'");//si existe una url usada
+	$verifica=mysqli_query($conexion,$sql);
+	if(mysqli_num_rows($verifica)>0){//si existe al menos una fila entonces la web esta usada
+		echo "web used";
+	}else{
+			if(trim($url) == ''){
+				echo 'url empty';
+				return false;
+			}else{
+				if (!filter_var($url, FILTER_VALIDATE_URL)) {
+					echo 'url invalid';
+					return false;
+				}
+				if (!preg_match("/\b(?:(?:https?|ftp):\/\/|www\.)[-a-z0-9+&@#\/%?=~_|!:,.;]*[-a-z0-9+&@#\/%=~_|](\.)[a-z]{2}/i",$url)) {
+					echo 'url invalid';
+					return false;
+				}else{
+					echo 'url added';
+					return true;
+				}
+			}
+		}
+
+}
 }
 ?>

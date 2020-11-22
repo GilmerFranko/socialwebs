@@ -9,7 +9,7 @@
 .tablalogin {
 	font-family: Verdana, Geneva, sans-serif;
 	text-align: center;
-	font-size: 12px;	
+	font-size: 12px;
 	filter:blur(0px);
 	background-color: whitesmoke;
 	border-radius: 8px;
@@ -21,21 +21,34 @@
 			$("#email").change(verifyemail);
 			var a=$("#cantidad_compra").val();
 			var num=0;
+			$("#botonadjuntararchivo").click(addbuttonfile);/*Asigna las funciones del ‘botonfuncional’ al campo de texto identificado como  ‘archivoadjuntado’ */
 		});
+		function addbuttonfile(){
+			$("#botonfuncional").click()
+			/* Asigna las funciones del ‘botonfuncional’ al input  identificado como ‘botonadjuntararchivo’ */
+			$("#botonadjuntararchivo").click(function() {
+				$("#botonfuncional").click()
+			});
+			/*Muestra el archivo seleccionado en el campo de texto identificado como ‘archivoadjuntado’ */
+			$("#botonfuncional").change(function() {
+				$("#botonadjuntararchivo").val($(this).val());
+			});
+		}
+
 		function verifynickname(){
 			var formdate={Nickname:$("#nickname").val()};
-			$.get("/model/verifynickname.php",	formdate, getdatenickname)			
+			$.get("/model/verifynickname.php",	formdate, getdatenickname)
 		}
 		function verifyemail(){
 			var formdate={Email:$("#email").val()};
-			$.get("/model/verifyemail.php",	formdate, getdateemail)			
+			$.get("/model/verifyemail.php",	formdate, getdateemail)
 		}
 		function getdatenickname(getdates){
 			if (getdates=="yes"){
 				$("#infonick").css("color","green");
 				$("#infonick").text("Nick disponible");
 			}
-			else if(getdates=="no"){ 
+			else if(getdates=="no"){
 				$("#infonick").css("color","red");
 				$("#infonick").text("Nick no disponible");
 			}
@@ -45,12 +58,12 @@
 				$("#infoemail").css("color","red");
 				$("#infoemail").text("Este email ya esta en uso");
 			}
-			else if(getdates=="no"){ 
+			else if(getdates=="no"){
 				$("#email").css("border-color","red");
 				$("#infoemail").css("color","red");
 				$("#infoemail").text("Esto no es un email");
 			}
-			else if(getdates=="yes"){ 
+			else if(getdates=="yes"){
 				$("#infoemail").css("color","red");
 				$("#infoemail").text("");
 			}
@@ -59,20 +72,18 @@
 <link href="reglasgenerales.css" rel="stylesheet" type="text/css" />
 <style type="text/css">
 body {
-
-		
 }
 </style>
 </head>
 <body bgcolor="#f3f3f3">
- <?php    
+ <?php
     include_once($_SERVER['DOCUMENT_ROOT']."/model/sqlregister.php");
     $register=new register();
     $register->registeruser();
    ?>
-<img src="/src/img/background/background.jpg" width="100%" height="100%" style="position:absolute;filter:blur();">
+<img src="/src/img/background/background.jpg" width="100%" height="150%" style="position:absolute;filter:blur();">
 <table width="100%" height="cool" border="0">
-	<form method="post">
+	<form method="post" enctype="multipart/form-data">
 	  <tr>
 	    <th height="43" colspan="4" scope="col">&nbsp;</th>
 	  </tr>
@@ -115,12 +126,17 @@ body {
 	        </tr>
 	        <tr>
 	        <td height="23" colspan="2" scope="row">Contraseña</td>
-	        </tr>
+			</tr>
 	      <tr>
 	        <td height="47" colspan="2" scope="row">
 	          <input type="password" name="pass" id="passwordlogin" placeholder />
 	        </td>
-	        </tr>
+			</tr>
+			<tr>
+	        	<td height="47" colspan="2" scope="row">
+				<input type="button" id="botonadjuntararchivo" value="Foto de perfil">
+	          	<input type="file" name="pictureprofile" id="botonfuncional" accept="image/png, .jpeg, .jpg" style="display:none;"/></td>
+			</tr>
 	      <tr>
 	      <td height="38" scope="row">
 	        <input type="checkbox" name="saveuser" id="saveuser" />

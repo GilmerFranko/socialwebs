@@ -137,12 +137,25 @@ a {
 a:active {
 	color: #06C;
 }
+.enlacesconcolorbar{
+	font-size:18px;
+	color:white;
+	text-decoration:none;
+	font-style:normal;
+	font-family:verdana, Geneva, sans-serif;
+}
+.iconbar{
+	font-style:normal;
+	text-decoration:none;
+	color:orange;
+	font-size:28px;
+}
 </style>
 </head>
 <body bgcolor="#F3F3F3" link="#000066">	
 <table width="100%" border="0" align="center" cellspacing="0" id="barnav">
   <tr>
-    <td width="14%" height="42"><a href="#" class="icon-wb_shade fonticon"></a></td>
+    <td width="14%" height="42"><span class="icon-wb_shade foticon iconbar"></span><a href="index" class="enlacesconcolorbar">Inicio</a></td>
     <td width="39%" id="barbusqueda"><form id="form2" name="form2" method="post" action="">
       <div style="border:none">
         <label for="formbuscar"></label>
@@ -154,9 +167,9 @@ a:active {
         </table>
       </div>
     </form></td>
-    <td width="21%"><a href="#" class="icon-add_alert fonticon" style="font-size:24px"></a></td>
-    <td width="8%"><a href="/view/profile/profile.php" class="icon-person fonticon" style="font-size:24px"></a></td>
-    <td width="18%"><a href="#" class="icon-logout fonticon" style="font-size:24px"></a></td>
+    <td width="21%"><span class="icon-add_alert foticon iconbar"></span><a href="/notifications" class="enlacesconcolorbar" style="">Notificacionees</a></td>
+    <td width="8%"><span class="icon-person foticon iconbar"></span><a href="/profile" class="enlacesconcolorbar" style="">Perfil</a></td>
+    <td width="18%"><span class="icon-logout foticon iconbar"></span><a href="#" class="enlacesconcolorbar" style="">Salir</a></td>
   </tr>
 </table>
 </body>

@@ -1,10 +1,12 @@
 <?php
 include_once($_SERVER['DOCUMENT_ROOT']."/model/conexionbase.php");
 		class dateprofile extends Conexion{
+			public $id;
 			public $name;
 			public $email;
 			public $nick;
 			public $pass;
+			public $pictureprofile;
 			public function dateprofile(){
 				parent::__construct();
 			}
@@ -17,6 +19,8 @@ include_once($_SERVER['DOCUMENT_ROOT']."/model/conexionbase.php");
 							$this->email=$arrow['email'];
 							$this->nick=$arrow['nickname'];
 							$this->pass=$arrow['password'];
+							$this->pictureprofile=$arrow['pictureprofile'];
+							$this->id=$arrow['id'];
 					}
 				}
 			}
