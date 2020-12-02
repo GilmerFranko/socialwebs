@@ -2,8 +2,8 @@ RewriteEngine On
 RewriteBase /
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule index /index.php [L]
-RewriteRule login view/login.php [L]
+RewriteRule ^index$ /index.php [L]
+RewriteRule ^login$ view/login.php [L]
 RewriteRule ^register$  /view/register.php [L]
 RewriteRule ^profile$ view/profile/profile.php [L]
 RewriteRule ^profile/websites$  /view/profile/websites.php [L]

@@ -1,0 +1,65 @@
+		.containprofile{
+
+			border:solid 0px black;
+		}
+		.containprofile tr{
+			border:solid 0px black;
+		}
+		.section{
+			left:10%;
+			position: absolute;
+			width: 80%;
+		}
+		.bar2{
+			background-color:var(--secondcolor);
+			font-family: Verdana, Geneva, sans-serif;
+			font-size: 16px;
+			font-style: normal;
+			text-align: center;
+			border-top-width: medium;
+			border-right-width: medium;
+			border-bottom-width: medium;
+			border-left-width: medium;
+			border-top-style: none;
+			border-right-style: none;
+			border-bottom-style: solid;
+			border-left-style: none;
+			border-top-color: orange;
+			border-right-color: orange;
+			border-bottom-color: var(--primarycolor);
+			border-left-color: orange;
+			-webkit-transition: all .3s;
+			-moz-transition: all .3s;
+			-ms-transition: all .3s;
+			-o-transition: all .3s;
+			transition: all .3s;
+			border-radius: 0px;
+				}
+		.enlaces2bar{
+			color:var(--primarycolor);
+			text-decoration:none;
+			font-family:Verdana, Geneva, sans-serif;
+			font-style:normal;
+		}
+		.socialnets{
+			text-decoration:none;
+			font-family:Verdana, Geneva, sans-serif;
+			font-style:normal;
+			font-size:38px;
+		}
+		.iconwhatsapp{
+			color:green;
+		}
+		.iconfacebook{
+			color:blue;
+		}
+		.icongithub{
+			color:black;
+		}
+		.stateverify{
+			text-decoration:none;
+			font-family:Verdana, Geneva, sans-serif;
+			font-style:normal;
+			font-size:38px;
+			color:var(--textcolor);
+		}

@@ -1,11 +1,11 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>barnav</title>
-<link href="/src/icomoon/style.css" rel="stylesheet" type="text/css" />
+<title></title>
+<link href="/src/fonts/remixicon.css" rel="stylesheet" type="text/css" />
 <link href="/view/css/reglasgenerales.css" rel="stylesheet" type="text/css" />
 <link href="/view/css/allcolors.css" rel="stylesheet" type="text/css" />
+<link rel="shortcut icon" href="/favicn.png?v=<?php echo time() ?>" />
 <style type="text/css">
 #barnav {
 	/*background: -webkit-linear-gradient(var(--primarycolor) 80%,var(--secondcolor));*/
@@ -61,25 +61,6 @@
 	border-radius: 8px;
 	border: thin none #000;
 }
-.nombreyperfil {
-	font-size: 10px;
-	background-color: #F3F3F3;
-}
-
-.tablaitem {
-	background-color: #FFFFFF;
-	text-align: center;
-	font-family: Verdana, Geneva, sans-serif;
-	font-size: 12px;
-	font-style: italic;
-	-webkit-transition: all .3s ease-in-out;
-	-moz-transition: all .3s ease-in-out;
-	-ms-transition: all .3s ease-in-out;
-	-o-transition: all .3s ease-in-out;
-	transition: all .3s ease-in-out;
-	width: 100%;
-	overflow: hidden;
-}
 .butom {
 	font-family: Verdana, Geneva, sans-serif;
 	background-color: #E3E3E3;
@@ -91,19 +72,6 @@
 	line-height: normal;
 	margin: 0px;
 }
-.imagenitem {
-	-webkit-transition: all .4s;
-	-moz-transition: all .4s;
-	-ms-transition: all .4s;
-	-o-transition: all .4s;
-	transition: all .4s;
-}
-.imagenitem:hover {
-	transform: scale(0.95);
-	border-radius: 18px;
-	background-color: #CCC;
-}
-
 #barrabuscar {
 	height: 30px;
 	padding: 0;
@@ -139,7 +107,7 @@ a:active {
 }
 .enlacesconcolorbar{
 	font-size:17px;
-	color:white;
+	color:var(--textcolor);
 	text-decoration:none;
 	font-style:normal;
 	font-family:verdana, Geneva, sans-serif;
@@ -147,7 +115,7 @@ a:active {
 .iconbar{
 	font-style:normal;
 	text-decoration:none;
-	color:white;
+	color:var(--textcolor);
 	font-size:30px;
 	display: block;
 }
@@ -156,34 +124,34 @@ a:active {
 	font-size:20px;
 	background-color:var(--seconcolor);
 	border:none;
-	color:white;
+	color:var(--textcolor);
 }
 li{
 	list-style: none;
 }
-a{
+/*a{
 	display: block;
-}
+}*/
 </style>
 </head>
 <body bgcolor="#F3F3F3" link="#000066">	
 <table width="100%" border="0" align="center" cellspacing="0" id="barnav">
   <tr>
-    <td width="14%" height="42"><li><span class="icon-wb_shade foticon iconbar"></span><a href="index" class="enlacesconcolorbar">Inicio</a></li></td>
+    <td width="14%" height="42"><li><a href="/index" class="iconbar"><span class="ri-fire-fill foticon iconbar"></span><a href="/index" class="enlacesconcolorbar">Inicio</a></a></li></td>
     <td width="39%" id="barbusqueda">
       <div style="border:none">
         <label for="formbuscar"></label>
         <table width="100%" border="0" cellpadding="0" cellspacing="0">
           <tr>
             <td width="239"><input name="formbuscar" type="text" class="barrabuscar" id="formbuscar" style="width:95%"/></td>
-            <td width="53"><button name="buttonsearch" class="buttonsearch"><span class="icon-search"></span></button></td>
+            <td width="53"><button name="buttonsearch" class="buttonsearch"><span class="ri-search-fill"></span></button></td>
           </tr>
         </table>
       </div>
     </form></td>
-    <td width="21%"><li><span class="icon-add_alert foticon iconbar"></span><a href="/notifications" class="enlacesconcolorbar" style="">Notificacionees</a></li></td>
-    <td width="8%"><li><span class="icon-person foticon iconbar"></span><a href="/profile" class="enlacesconcolorbar" style="">Perfil</a></li></td>
-    <td width="18%"><li><span class="icon-logout foticon iconbar"></span><a href="/logout" class="enlacesconcolorbar" style="">Salir</a></li></td>
+    <td width="21%"><li><a href="/notifications" class="iconbar"><span class="ri-notification-fill foticon iconbar"></span><a href="/notifications" class="enlacesconcolorbar" style="">Notificacionees</a></a></li></td>
+    <td width="8%"><li><span class="ri-profile-fill iconbar"></span><a href="/profile" class="enlacesconcolorbar" style="">Perfil</a></li></td>
+    <td width="18%"><li><a href="/logout" class="iconbar"><span class="ri-logout-circle-fill iconbar"></span><a href="/logout" class="enlacesconcolorbar" style="">Salir</a></a></li></td>
   </tr>
 </table>
 </body>

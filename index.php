@@ -33,8 +33,8 @@
 }	
 .nombreyperfil {
 	font-size: 10px;
-	background-color: #F3F3F3;
-}
+  color:var(--primarycolor);
+} 
 
 .tablaitem {
 	background-color: #FFFFFF;
@@ -42,14 +42,13 @@
 	font-family: Verdana, Geneva, sans-serif;
 	font-size: 12px;
 	font-style: italic;
-	-webkit-transition: all .3s ease-in-out;
-	-moz-transition: all .3s ease-in-out;
-	-ms-transition: all .3s ease-in-out;
-	-o-transition: all .3s ease-in-out;
-	transition: all .3s ease-in-out;
+	transition: all .4s linear;
 	width: 100%;
 	overflow: hidden;
-  box-shadow:0px 0px 8px -2px var(--secondcolor),0px 0px 4px 0px black;
+  box-shadow:0px 0px 0px 0px var(--secondcolor);
+}
+.tablaitem:hover{
+  box-shadow:0px 0px 2px 1px var(--secondcolor);
 }
 .butom {
 	font-family: Verdana, Geneva, sans-serif;
@@ -63,11 +62,7 @@
 	margin: 0px;
 }
 .imagenitem {
-	-webkit-transition: all .4s;
-	-moz-transition: all .4s;
-	-ms-transition: all .4s;
-	-o-transition: all .4s;
-	transition: all .4s;
+	transition: all .2s;
 }
 .imagenitem:hover {
 	transform: scale(0.95);
@@ -83,11 +78,10 @@
 }
 .foticonprofile {
   background-color: var(--primarycolor);
-  color:white;
+  color:var(--textcolor);
 }
 .linknameprofile{
-  background-color: var(--primarycolor);
-  color:white;
+  color:var(--primarycolor);
 }
 </style>
 <style type="text/css">
@@ -95,18 +89,13 @@
 	text-align: center;
 	font-family: Verdana, Geneva, sans-serif;
 	font-size: 12px;
-	font-style: italic;
-	-webkit-transition: all .3s ease-in-out;
-	-moz-transition: all .3s ease-in-out;
-	-ms-transition: all .3s ease-in-out;
-	-o-transition: all .3s ease-in-out;
-	transition: all .3s ease-in-out;
+	font-style: italic;t
 	width: 100%;
 	overflow:hidden;
 }
 body,td,th {
 	font-family: Verdana, Geneva, sans-serif;
-	color: #333;
+	color: var(--textcolor);
 }
 a {
 	font-style: italic;
@@ -128,12 +117,12 @@ a:active {
       $data=new dateprofile();
       $data->getdateprofile($_SESSION['id']); #enviarle como parametros el id del usuario
     ?>
-    <h1>Ventas y Precios</h1>
+    <h1 style="">Date la oportunidad de conocer un sitio nuevo e interesante para ti!</h1>
     <table width="100%" height="372" border="0" cellspacing="20" id="tablacontenido">
       <tr>
         <td width="25%" height="1"><table width="100%" border="0" cellpadding="0" cellspacing="0" class="tablaitem">
        <tr class="nombreyperfil">
-            <td height="20" colspan="2"><a href="#" style="text-decoration: none; font-size: 16px;" class="linknameprofile">Gilmer Franko</a></td>
+            <td height="20" colspan="2" style="background-color: var(--secondcolor);"><a href="#" style="text-decoration: none; font-size: 16px;" class="linknameprofile">Gilmer Franko</a></td>
             <td width="80"><a href="#" class="butom, foticonprofile" style="font-size:24px"><img src="<?php echo $data->pictureprofile;?>"alt="perfil" width="30px"></a></td>
           <tr>
             <td colspan="3" class="imagenitem"><em><img src="/src/img/facebook.jpg" width="300" alt="Chimo" /></em></td>
@@ -146,7 +135,7 @@ a:active {
               Puntucacion
             </form></td>
             <td width="33%" class="butom">******</td>
-            <td width="33%" class="butom"><a href="#" style="background-color:var(--secondcolor); color:white; text-decoration:none;">Puntuar</a></td>
+            <td width="33%" class="butom"><a href="#" style="background-color:var(--secondcolor); color:var(--textcolor); text-decoration:none;">Puntuar</a></td>
           </tr>
           <tr class="tablaitem">
             <td colspan="3" class="cambiarprecio"><p class="letraengris">Opiniones</p></td>
@@ -154,11 +143,11 @@ a:active {
         </table></td>
         <td width="25%" height="1"><table width="100%" border="0" cellpadding="0" cellspacing="0" class="tablaitem">
           <tr class="nombreyperfil">
-            <td height="20" colspan="2"><a href="#" style="text-decoration: none; font-size: 16px;" class="linknameprofile">Gilmer Franko</a></td>
+            <td height="20" colspan="2" style="background-color: var(--secondcolor);"><a href="#" style="text-decoration: none; font-size: 16px;" class="linknameprofile">Gilmer Franko</a></td>
             <td width="80" ><a href="#" class="butom, foticonprofile" style="font-size:24px"><img src="<?php echo $data->pictureprofile;?>"alt="perfil" width="30px"></a></td>
           </tr>
           <tr>
-            <td colspan="3" class="imagenitem"><em><img src="/src/img/facebook.jpg" width="300" alt="Chimo" /></em></td>
+            <td colspan="3" class="imagenitem"><em><img src="/src/img/backgrounds/background.jpg" width="300" alt="Chimo" /></em></td>
           </tr>
           <tr>
             <td colspan="3"><div>Www.razadeperros.net</div></td>
@@ -168,7 +157,7 @@ a:active {
               Puntucacion
             </form></td>
             <td width="33%" class="butom">******</td>
-            <td width="33%" class="butom"><a href="#" style="background-color:var(--secondcolor); color:white; text-decoration:none;">Puntuar</a></td>
+            <td width="33%" class="butom"><a href="#" style="background-color:var(--secondcolor); color:var(--textcolor); text-decoration:none;">Puntuar</a></td>
           </tr>
           <tr class="tablaitem">
             <td colspan="3" class="cambiarprecio"><p class="letraengris">Opiniones</p></td>
@@ -176,7 +165,7 @@ a:active {
         </table></td>
         <td width="25%"><table width="100%" border="0" cellpadding="0" cellspacing="0" class="tablaitem">
           <tr class="nombreyperfil">
-            <td height="20" colspan="2"><a href="#" style="text-decoration: none; font-size: 16px;" class="linknameprofile">Gilmer Franko</a></td>
+            <td height="20" colspan="2" style="background-color: var(--secondcolor);"><a href="#" style="text-decoration: none; font-size: 16px;" class="linknameprofile">Gilmer Franko</a></td>
             <td width="80" ><a href="#" class="butom, foticonprofile" style="font-size:24px"><img src="<?php echo $data->pictureprofile;?>"alt="perfil" width="30px"></a></td>
           </tr>
           <tr>
@@ -200,7 +189,7 @@ a:active {
       <tr>
         <td><table width="91%" border="0" cellpadding="0" cellspacing="0" class="tablaitem">
           <tr class="nombreyperfil">
-            <td height="20" colspan="2"><a href="#" style="text-decoration: none; font-size: 16px;" class="linknameprofile">Gilmer Franko</a></td>
+            <td height="20" colspan="2" style="background-color: var(--secondcolor);"><a href="#" style="text-decoration: none; font-size: 16px;" class="linknameprofile">Gilmer Franko</a></td>
             <td width="80" ><a href="#" class="butom, foticonprofile" style="font-size:24px"><img src="<?php echo $data->pictureprofile;?>"alt="perfil" width="30px"></a></td>
           </tr>
           <tr>
@@ -228,7 +217,7 @@ a:active {
         </table></td>
         <td><table width="91%" border="0" cellpadding="0" cellspacing="0" class="tablaitem">
           <tr class="nombreyperfil">
-            <td height="20" colspan="2"><a href="#" style="text-decoration: none; font-size: 16px;" class="linknameprofile">Gilmer Franko</a></td>
+            <td height="20" colspan="2" style="background-color: var(--secondcolor);"><a href="#" style="text-decoration: none; font-size: 16px;" class="linknameprofile">Gilmer Franko</a></td>
             <td width="80" ><a href="#" class="butom, foticonprofile" style="font-size:24px"><img src="<?php echo $data->pictureprofile;?>"alt="perfil" width="30px"></a></td>
           </tr>
           <tr>
@@ -256,7 +245,7 @@ a:active {
         </table></td>
         <td><table width="91%" border="0" cellpadding="0" cellspacing="0" class="tablaitem">
           <tr class="nombreyperfil">
-            <td height="20" colspan="2"><a href="#" style="text-decoration: none; font-size: 16px;" class="linknameprofile">Gilmer Franko</a></td>
+            <td height="20" colspan="2" style="background-color: var(--secondcolor);"><a href="#" style="text-decoration: none; font-size: 16px;" class="linknameprofile">Gilmer Franko</a></td>
             <td width="80" ><a href="#" class="butom, foticonprofile" style="font-size:24px"><img src="<?php echo $data->pictureprofile;?>"alt="perfil" width="30px"></a></td>
           </tr>
           <tr>

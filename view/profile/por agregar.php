@@ -1,0 +1,1 @@
+agregar los unique a [phone, email, nick, webs];
