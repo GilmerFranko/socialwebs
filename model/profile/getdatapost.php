@@ -15,7 +15,7 @@ include_once($_SERVER['DOCUMENT_ROOT']."/model/conexionbase.php");
 				parent::__construct();
 			}
 			public function getdataposts($id){
-					$sql = ("SELECT * FROM usersposts WHERE id=1");//si existe 
+					$sql = ("SELECT * FROM usersposts WHERE id=$id");//si existe 
 					$verifica=$this->conexionBase->query($sql);
 					if(mysqli_num_rows($verifica)>0){//si existe al menos una fila
 						while($arrow=$verifica->fetch_assoc()){//mientras exista recorra la fila
@@ -26,7 +26,7 @@ include_once($_SERVER['DOCUMENT_ROOT']."/model/conexionbase.php");
 							$this->dislikes=$arrow['dislikes'];
 							$this->views=$arrow['views'];
 							$this->img=$arrow['img'];
-							$this->date=$arrow['date'];
+							$this->date=$arrow['datetime'];
 							$this->content=$arrow['content'];
 							$this->comments=$arrow['comments'];
 					}

@@ -42,9 +42,10 @@
 	include_once($_SERVER['DOCUMENT_ROOT']."/view/barnav.php");#incluir barnav
 	include_once($_SERVER['DOCUMENT_ROOT']."/model/profile/getdatapost.php");#incluir dateprofile
 	include_once($_SERVER['DOCUMENT_ROOT']."/model/dateprofile.php");#incluir dateprofile
+	$idurlpost=$_GET['idurlpost'];#mediante la url se pasara el id del post a mostrar
 	$data=new dataposts();
-	$data->getdataposts(2); #enviarle como parametros el id del usuario
-	$datauser=new dateprofile();
+	$data->getdataposts($idurlpost); #enviarle como parametro el id del post que se mostrara
+	$datauser=new dateprofile(); #los datos del usuario
 	$datauser->getdateprofile($_SESSION['id']);
 	$datauserpost=new dateprofile();
 	$datauserpost->getdateprofile($data->owner);

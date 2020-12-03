@@ -8,10 +8,31 @@
 	<link rel="stylesheet" href="/view/css/tablestyles.css">
 	<link rel="stylesheet" href="/src/fonts/remixicon.css">
 	<link rel="stylesheet" href="/view/css/csspageprofile.css">
+	<script src="/view/script/jquery-3.4.1.min.js"></script>
 	<title>Perfil</title>
 	<style>
 		
 	</style>
+	<script>
+		var pagina=0;
+		$(document).ready(function() {
+			cargardatos();	
+		});
+		function cargardatos(){
+  			$.get("/view/profile/viewtopostinprofile.php?urlpage="+pagina,
+   				function(data){
+    				if (data != "") {
+     					$(".beforeafter:last").before(data); 
+    			}
+   			});				
+		}
+		$(window).scroll(function(){
+			if ($(window).scrollTop() == $(document).height() - $(window).height()){
+				pagina++;
+				cargardatos();
+			}					
+		});
+	</script>
 </head>
 <body>
     <?php
@@ -24,9 +45,17 @@
     }*/
 	include_once($_SERVER['DOCUMENT_ROOT']."/view/barnav.php");#incluir barnav
 	include_once($_SERVER['DOCUMENT_ROOT']."/model/dateprofile.php");#incluir dateprofile
+	include_once($_SERVER['DOCUMENT_ROOT']."/model/profile/maketopost.php");#incluir dateprofile
 	$data=new dateprofile();
 	$data->getdateprofile($_SESSION['id']); #enviarle como parametros el id del usuario
-	 ?>
+	$maketopost=new maketopost();
+	if(!empty($_POST['titlepost']) and !empty($_POST['contentpost']) and !empty($_POST['owner'])){
+		$maketopost->setmaketopost();
+		echo "hola";
+	}else{
+		echo "string";
+	}
+	?>
 	<section class="section" align="center">
 		<table cellspacing="3" class="containprofile" width="100%" border="0">
 			<tr>
@@ -132,20 +161,36 @@
 									<tr>
 										<td>
 											<table id="tabletopost">
-												<form action="" id="formtopost"></form>
+												<form action="" id="formtopost" method="post">
 													<tr>
 														<td>
-															<button>Publicar</button>
+															<span class="info">Titulo</span>
 														</td>
-														<td><input type="area"></td>
 													</tr>
-													<tr>
-														<td>
-															
-														</td>
-														<td><button>Adjuntar Archivos</button></td>
+														<tr>
+															<td>
+																<input type="text" name="titlepost" placeholder="">
+																<input type="hidden" name="owner" value="<?php echo $_SESSION['id'];?>">
+															</td>
+														</tr>
+														<tr>
+															<td>
+																<span class="info">Escribe tu post aqui</span>
+															</td>
+														</tr>
+														<tr>
+															<td>
+																<textarea name="contentpost" id="" cols="30" rows="10"></textarea>
+															</td>
+														</tr>
+														<tr>
+															<td>
+																<input type="submit" value="Publicar	">
+																<button>Adjuntar Archivos</button>
+															</td>
 
-													</tr>
+														</tr>
+													</form>
 											</table>
 										</td>
 									</tr>
@@ -164,7 +209,7 @@
 														<table width="100%">
 															<tr>
 																<td>
-																	<h3>Nueva Version</h3>
+																	<a href="/view/profile/viewtopost.php?idurlpost=1" class="enlacesconcolor"><h3>Nueva Version </h3></a>
 																</td>
 															</tr>
 															<tr>
@@ -179,7 +224,7 @@
 													</td>
 												</tr>
 											</table>
-											<tr></tr>
+											<tr class="beforeafter"></tr>
 										</td>
 									</tr>
 								</table>

@@ -6,6 +6,7 @@
 <link href="/src/icomoon/style.css" rel="stylesheet" type="text/css" />
 <link href="/view/css/reglasgenerales.css" rel="stylesheet" type="text/css" />
 <link href="/view/css/allcolors.css" rel="stylesheet" type="text/css" />
+<script src="/view/script/jquery-3.4.1.min.js"></script>
 <style type="text/css">
 .fonticon {
 	color: #E3E3E3;
@@ -33,7 +34,8 @@
 }	
 .nombreyperfil {
 	font-size: 10px;
-  color:var(--primarycolor);
+  color:var(--textcolor);
+  background-color: var(--primarycolor);
 } 
 
 .tablaitem {
@@ -77,11 +79,10 @@
 	border: none;
 }
 .foticonprofile {
-  background-color: var(--primarycolor);
   color:var(--textcolor);
 }
 .linknameprofile{
-  color:var(--primarycolor);
+  color:var(--textcolor);
 }
 </style>
 <style type="text/css">
@@ -122,7 +123,7 @@ a:active {
       <tr>
         <td width="25%" height="1"><table width="100%" border="0" cellpadding="0" cellspacing="0" class="tablaitem">
        <tr class="nombreyperfil">
-            <td height="20" colspan="2" style="background-color: var(--secondcolor);"><a href="#" style="text-decoration: none; font-size: 16px;" class="linknameprofile">Gilmer Franko</a></td>
+            <td height="20" colspan="2" ><a href="#" style="text-decoration: none; font-size: 16px;" class="linknameprofile">Gilmer Franko</a></td>
             <td width="80"><a href="#" class="butom, foticonprofile" style="font-size:24px"><img src="<?php echo $data->pictureprofile;?>"alt="perfil" width="30px"></a></td>
           <tr>
             <td colspan="3" class="imagenitem"><em><img src="/src/img/facebook.jpg" width="300" alt="Chimo" /></em></td>
@@ -143,7 +144,7 @@ a:active {
         </table></td>
         <td width="25%" height="1"><table width="100%" border="0" cellpadding="0" cellspacing="0" class="tablaitem">
           <tr class="nombreyperfil">
-            <td height="20" colspan="2" style="background-color: var(--secondcolor);"><a href="#" style="text-decoration: none; font-size: 16px;" class="linknameprofile">Gilmer Franko</a></td>
+            <td height="20" colspan="2" ><a href="#" style="text-decoration: none; font-size: 16px;" class="linknameprofile">Gilmer Franko</a></td>
             <td width="80" ><a href="#" class="butom, foticonprofile" style="font-size:24px"><img src="<?php echo $data->pictureprofile;?>"alt="perfil" width="30px"></a></td>
           </tr>
           <tr>
@@ -165,7 +166,7 @@ a:active {
         </table></td>
         <td width="25%"><table width="100%" border="0" cellpadding="0" cellspacing="0" class="tablaitem">
           <tr class="nombreyperfil">
-            <td height="20" colspan="2" style="background-color: var(--secondcolor);"><a href="#" style="text-decoration: none; font-size: 16px;" class="linknameprofile">Gilmer Franko</a></td>
+            <td height="20" colspan="2" ><a href="#" style="text-decoration: none; font-size: 16px;" class="linknameprofile">Gilmer Franko</a></td>
             <td width="80" ><a href="#" class="butom, foticonprofile" style="font-size:24px"><img src="<?php echo $data->pictureprofile;?>"alt="perfil" width="30px"></a></td>
           </tr>
           <tr>
@@ -189,7 +190,7 @@ a:active {
       <tr>
         <td><table width="91%" border="0" cellpadding="0" cellspacing="0" class="tablaitem">
           <tr class="nombreyperfil">
-            <td height="20" colspan="2" style="background-color: var(--secondcolor);"><a href="#" style="text-decoration: none; font-size: 16px;" class="linknameprofile">Gilmer Franko</a></td>
+            <td height="20" colspan="2" ><a href="#" style="text-decoration: none; font-size: 16px;" class="linknameprofile">Gilmer Franko</a></td>
             <td width="80" ><a href="#" class="butom, foticonprofile" style="font-size:24px"><img src="<?php echo $data->pictureprofile;?>"alt="perfil" width="30px"></a></td>
           </tr>
           <tr>
@@ -217,7 +218,7 @@ a:active {
         </table></td>
         <td><table width="91%" border="0" cellpadding="0" cellspacing="0" class="tablaitem">
           <tr class="nombreyperfil">
-            <td height="20" colspan="2" style="background-color: var(--secondcolor);"><a href="#" style="text-decoration: none; font-size: 16px;" class="linknameprofile">Gilmer Franko</a></td>
+            <td height="20" colspan="2" ><a href="#" style="text-decoration: none; font-size: 16px;" class="linknameprofile">Gilmer Franko</a></td>
             <td width="80" ><a href="#" class="butom, foticonprofile" style="font-size:24px"><img src="<?php echo $data->pictureprofile;?>"alt="perfil" width="30px"></a></td>
           </tr>
           <tr>
@@ -245,7 +246,7 @@ a:active {
         </table></td>
         <td><table width="91%" border="0" cellpadding="0" cellspacing="0" class="tablaitem">
           <tr class="nombreyperfil">
-            <td height="20" colspan="2" style="background-color: var(--secondcolor);"><a href="#" style="text-decoration: none; font-size: 16px;" class="linknameprofile">Gilmer Franko</a></td>
+            <td height="20" colspan="2" ><a href="#" style="text-decoration: none; font-size: 16px;" class="linknameprofile">Gilmer Franko</a></td>
             <td width="80" ><a href="#" class="butom, foticonprofile" style="font-size:24px"><img src="<?php echo $data->pictureprofile;?>"alt="perfil" width="30px"></a></td>
           </tr>
           <tr>
