@@ -9,6 +9,7 @@
 	<link rel="stylesheet" href="/src/fonts/remixicon.css">
 	<link rel="stylesheet" href="/view/css/csspageprofile.css">
 	<script src="/view/script/jquery-3.4.1.min.js"></script>
+	<script src="/view/script/getsetreactions.js"></script>
 	<title>Perfil</title>
 	<style>
 		
@@ -22,7 +23,7 @@
   			$.get("/view/profile/viewtopostinprofile.php?urlpage="+pagina,
    				function(data){
     				if (data != "" & data !="end") {
-     					$(".beforeafter:last").before(data); 
+     					$(".beforeafter:last").before(data);
     				}
     				if (data == "end") {
     					$(".beforeafter:last").before("<span class='info'>Vaya... Ya no hay que mostrar!</span");
@@ -35,7 +36,26 @@
 				cargardatos();
 			}					
 		});
-	</script>
+		function showinfoimg($urlimg){
+			 $(function(){
+		            var formData = new FormData($("#uploadimage")[0]);
+		            var ruta = "imagen-ajax.php";
+		            $.ajax({
+		                url: ruta,
+		                type: "POST",
+		                data: formData,
+		                contentType: false,
+		                processData: false,
+		                success: function(datos)
+		                {
+                    $("#respuesta").html(datos);
+                }
+            });
+		       	});
+			}
+
+		
+</script>
 </head>
 <body>
     <?php
@@ -52,9 +72,8 @@
 	$data=new dateprofile();
 	$data->getdateprofile($_SESSION['id']); #enviarle como parametros el id del usuario
 	$maketopost=new maketopost();
-	if(!empty($_POST['titlepost']) and !empty($_POST['contentpost']) and !empty($_POST['owner'])){
+	if(!empty($_POST['titlepost']) and !empty($_POST['contentpost']) and !empty($_POST['userid'])){
 		$maketopost->setmaketopost();
-		echo "hola";
 	}else{
 		echo "string";
 	}
@@ -81,21 +100,23 @@
 						<tr>
 							<td width="30%">
 								<table class="prueba" cellpadding="0">
-									<tr">
+									<tr>
 										<td>
 											<div id="photoandverify">
-												<img src="<?php echo $data->pictureprofile;?>"alt="perfil" width="200px">
+												<img src="<?php echo $data->pictureprofile;?>"alt="perfil" width="200px" onclick="showinfoimg(<?php echo $data->pictureprofile;?>)">
+												<input type="file" file="<?php echo $data->pictureprofile;?>">
+												
 												<!--agg foto perfil-->
-											</td>
-											<td>
-												<a href="#" class="stateverify">
-													<i class="ri-whatsapp-fill">
-													</a>
+											</div>
+										</td>
+										<td>
+											<a href="#" class="stateverify">
+												<i class="ri-whatsapp-fill">
 												</i>
+											</a>
 												<br>
 												<a href="#" class="stateverify">
-													<i class="ri-facebook-box-fill stateverify">
-														
+													<i class="ri-facebook-box-fill stateverify">	
 													</i>
 												</a>
 												<br>
@@ -104,7 +125,7 @@
 														
 													</i>
 												</a>
-											</div>
+											
 										</td><!--agg las redes sociales-->
 									</tr>
 									<tr>
@@ -162,8 +183,8 @@
 							<td colspan="2">
 								<table id="tableposts" width="100%" cellpadding="30">
 									<tr>
-										<td>
-											<table id="tabletopost">
+										<td colspan="2">
+											<table id="tablemakepost">
 												<form action="" id="formtopost" method="post">
 													<tr>
 														<td>
@@ -173,7 +194,7 @@
 														<tr>
 															<td>
 																<input type="text" name="titlepost" placeholder="">
-																<input type="hidden" name="owner" value="<?php echo $_SESSION['id'];?>">
+																<input type="hidden" name="userid" value="<?php echo $_SESSION['id'];?>">
 															</td>
 														</tr>
 														<tr>
@@ -212,6 +233,7 @@
 							</td>
 						</tr>
 					</table>
+				</td>
 			</tr>
 		</table>
 	</section>

@@ -89,6 +89,7 @@
 	$data=new dateprofile();
 	$data->getdateprofile($_SESSION['id']); #enviarle como parametros el id del usuario
     echo "<br><br>";
+    echo $_SESSION['id'];
     if(!empty($_POST['name']) and !empty($_POST['url'])){
         $addwebsite=new addwebsite();
         $addwebsite->setaddwebsite($_SESSION['id']);

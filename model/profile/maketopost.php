@@ -7,13 +7,16 @@
 		public function setmaketopost(){
 			$title=$_POST['titlepost'];
 			$list=$_POST['listpost'];
-			$owner=$_POST['owner'];
+			$userid=$_POST['userid'];
 			$contentpost=$_POST['contentpost'];
 			//falta agregar seguridad pero bueno vamos probando
-			$sql = ("INSERT INTO usersposts(title, content, owner, likes, dislikes, comments, views, img, list) VALUES ('$title','$contentpost',$owner,0,0,0,0,'img', 1)") ;
+			$sql = ("INSERT INTO usersposts(userid, title, content, likes, dislikes, comments, views, img, list) VALUES ($userid,'$title','$contentpost',0,0,0,0,'img', 1)") ;
 			$resultado=$this->conexionBase->query($sql);
 			if($resultado){
-				echo "bien";
+				$id=$this->conexionBase->insert_id;
+				$sql = ("INSERT INTO likespost(userid, userpostid, likes, unlikes) VALUES ($userid, $id ,0,0)") ;
+				$resultado=$this->conexionBase->query($sql);
+				//echo "bien";
 			}else{
 				echo "error";
 			}

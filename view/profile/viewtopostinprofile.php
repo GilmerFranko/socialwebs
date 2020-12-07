@@ -6,7 +6,7 @@
 			parent::__construct();
 		}
 		public function vtpip($minnumpage, $maxnumpage, $idowner){
-			$sql = ("SELECT * FROM usersposts WHERE owner=$idowner ORDER BY id DESC LIMIT $minnumpage,$maxnumpage ") ;
+			$sql = ("SELECT * FROM usersposts WHERE userid=$idowner ORDER BY id DESC LIMIT $minnumpage,$maxnumpage ") ;
 			$resultado=$this->conexionBase->query($sql);
 			if ($resultado){
 				if(mysqli_num_rows($resultado)>0){//si existe al menos una 
@@ -41,13 +41,15 @@
     }
 	include_once($_SERVER['DOCUMENT_ROOT']."/model/profile/getdatapost.php");#incluir dateprofile
 	include_once($_SERVER['DOCUMENT_ROOT']."/model/dateprofile.php");#incluir dateprofile
+	include_once($_SERVER['DOCUMENT_ROOT']."/model/profile/getsetlikes.php");#ñp incluyo para poder ver los likes de los post dateprofile
 	$data=new dataposts();
 	//$data->getdataposts(); #enviarle como parametro el id del post que se mostrara
 	$datauser=new dateprofile(); #los datos del usuario
 	$datauser->getdateprofile($_SESSION['id']);
 	$datauserpost=new dateprofile();
-	$datauserpost->getdateprofile($data->owner);
+	$datauserpost->getdateprofile($data->userid);
 	$viewtopostinprofile=new viewtopostinprofile();
+	$getsetlikes= new getsetlikes()
 ?>
 <?php
 	$pasa=true;
@@ -115,7 +117,15 @@
 						<tr>
 							<td align="center">
 								<div class="commentandreactions">
-									<i class="ri-dislike-fill"></i><i class="ri-dislike-fill"></i><button>Comentar</button>
+									<i class="ri-dislike-fill" id="<?php echo 'like'.$page[$x][0];?>" onclick="liked(<?php echo $page[$x][1];?>,<?php echo $page[$x][0]?>)">
+										<?php
+										 	$getsetlikes->getnumlikesof($page[$x][1],$page[$x][0]);
+											echo $getsetlikes->devuelvenumfila; 
+										?>
+										
+									</i><!--imprime los like que lleva esta publicacion-->
+									<i class="ri-dislike-line" id="unlike"></i><button>Comentar</button>
+
 								</div>
 							</td>
 						</tr>

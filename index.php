@@ -86,7 +86,7 @@ a:active {
 }
 </style>
 </head>
-<body bgcolor="#F3F3F3" link="#000066">
+<body link="#000066">
   <section>
     <?php 
       session_start();

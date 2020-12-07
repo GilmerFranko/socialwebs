@@ -12,7 +12,7 @@ include_once($_SERVER['DOCUMENT_ROOT']."/model/conexionbase.php");
 				$url=$_POST['url'];
 				$urlhttps="https://".$url; //este es el que servira para las comprobaciones
                 $image=$_POST['image'];
-				$owner=$id;
+				$userid=$id;
 				echo "</div>";
 			   // Variable to check
 				// Remover los caracteres ilegales de la url
@@ -35,13 +35,14 @@ include_once($_SERVER['DOCUMENT_ROOT']."/model/conexionbase.php");
 						}else{//solo si no esta repetida
 							try{
 								switch($image){#comprueba si el usuario agrego una imagen
-									case null: $sql = ("INSERT INTO websites(name, url, owner, likes, dislikes) VALUES ('$name','$url',$owner, 0, 0)"); break;
-									case !null:$sql = ("INSERT INTO websites(name, url, owner,image, likes, dislikes) VALUES ('$name','$url',$owner,'$image', 0, 0)"); break;
+									case null: $sql = ("INSERT INTO websites(userid, name, url , likes, dislikes) VALUES ($userid,'$name','$url', 0, 0)"); break;
+									case !null:$sql = ("INSERT INTO websites(userid, name, url ,image, likes, dislikes) VALUES ($userid,'$name','$url','$image', 0, 0)"); break;
 								}
 								$verifica=$this->conexionBase->query($sql);
 								if ($verifica){
 									echo "web added";
 								}else{
+									echo "no agg";
 								}
 							}
 						catch(ERROR $e){
@@ -90,6 +91,8 @@ if (!empty($_POST['url']) and $_POST['option']=="2"){
 	$conexion=mysqli_connect("localhost", "root", "");
 	mysqli_select_db($conexion, "bbdd_web");
 	$sql = ("SELECT * FROM websites  WHERE url='$url'");//si existe una url usada
+	$verifica=mysqli_query($conexion,$sql);
+	$sql = ("INSERT INTO websites(userid, name, url , likes, dislikes) VALUES ($userid,'$name',$url, 0, 0)");
 	$verifica=mysqli_query($conexion,$sql);
 	if(mysqli_num_rows($verifica)>0){//si existe al menos una fila entonces la web esta usada
 		echo "web used";

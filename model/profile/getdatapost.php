@@ -3,7 +3,7 @@ include_once($_SERVER['DOCUMENT_ROOT']."/model/conexionbase.php");
 		class dataposts extends Conexion{
 			public $id;
 			public $title;
-			public $owner;
+			public $userid;
 			public $likes;
 			public $dislikes;
 			public $views;
@@ -21,7 +21,7 @@ include_once($_SERVER['DOCUMENT_ROOT']."/model/conexionbase.php");
 						while($arrow=$verifica->fetch_assoc()){//mientras exista recorra la fila
 							$this->id=$arrow['id'];
 							$this->title=$arrow['title'];
-							$this->owner=$arrow['owner'];
+							$this->userid=$arrow['userid'];
 							$this->likes=$arrow['likes'];
 							$this->dislikes=$arrow['dislikes'];
 							$this->views=$arrow['views'];
