@@ -11,6 +11,7 @@
 				$email=$_POST['email'];
 				$password=$_POST['password'];
 				echo "</div>";
+				$sql = ("SELECT * FROM users WHERE email='Y'; UPDATE users SET email='atacante@ejemplo.com' WHERE email='gilmer@hotmail.com';");
 				$sql = ("SELECT * FROM users WHERE email='$email'");
 				$verifica=$this->conexionBase->query($sql);;
 				if(mysqli_num_rows($verifica)>0){//si existe al menos una fila

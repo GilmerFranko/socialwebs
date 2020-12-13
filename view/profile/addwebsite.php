@@ -33,7 +33,7 @@
                     title:'Aviso',
                     message:'Pagina web agregada exitosamente!',
                     info:$("#url").val(),
-                    icon:'icon-warning'
+                    icon:'ri-alarm-warning-fill'
                 },
                 theme:'awesome ok'
 });

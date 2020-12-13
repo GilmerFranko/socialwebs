@@ -9,5 +9,8 @@ RewriteRule ^profile$ view/profile/profile.php [L]
 RewriteRule ^profile/websites$  /view/profile/websites.php [L]
 RewriteRule ^profile/websites/add$  /view/profile/addwebsite.php [L]
 RewriteRule ^logout$  /view/profile/logout.php [L]
+RewriteRule ^search/(.+) /view/search/search.php?search=$1 [L]
+Options -Indexes 
+
 
 

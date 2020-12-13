@@ -1,12 +1,12 @@
-<?php
+<?php 
 	include_once($_SERVER['DOCUMENT_ROOT']."/model/conexionbase.php");
-	class viewtopostinprofile extends Conexion{
-		public $devuelvefila;
-		public function construc(){
+	class getsetsearch extends Conexion{
+			public $devuelvefila;
+		public function login(){
 			parent::__construct();
 		}
-		public function vtpip($minnumpage, $maxnumpage, $idowner){
-			$sql = ("SELECT * FROM usersposts WHERE userid=$idowner ORDER BY id DESC LIMIT $minnumpage,$maxnumpage ") ;
+		public function getsearchsimple($minnumpage, $maxnumpage, $search){
+			$sql = ("SELECT * FROM usersposts WHERE MATCH(title, content) AGAINST ('$search') ORDER BY likes DESC LIMIT $minnumpage,$maxnumpage");
 			$resultado=$this->conexionBase->query($sql);
 			if ($resultado){
 				if(mysqli_num_rows($resultado)>0){//si existe al menos una 
@@ -15,32 +15,24 @@
 						$this->devuelvefila[$a] =$fila;
 						$a++;
 					}
+					return $this->devuelvefila;
+				}else{
+					echo "none";
 				}
-				return $this->devuelvefila;
 			}else{
-				echo "without result";
+				echo "error";
 			}
 		}
 	}
-	/*$sql = ("SELECT * FROM publicaciones ORDER BY id DESC limit 5") ;
-	$conexion=mysqli_connect("localhost", "root", "","usuarios");
-	$resultado=$conexion->query($sql);
-	if(mysqli_num_rows($resultado)>0){//si existe al menos una fila
-		$hl=0;
-		while($fila=$resultado->fetch_row()){//mientras exista recorra la fila
-			$hl++;
-			$devuelvefila[$hl] =$fila;
-		}
-	}*/
- ?>
+?>
 <?php
 
     session_start();
     if (!isset($_SESSION['id']) || empty($_SESSION['id'])){
         header("location: /view/login.php");
     }
-	include_once($_SERVER['DOCUMENT_ROOT']."/model/profile/getdatapost.php");#incluir dateprofile
-	include_once($_SERVER['DOCUMENT_ROOT']."/model/dateprofile.php");#incluir dateprofile
+	include_once($_SERVER['DOCUMENT_ROOT']."/model/profile/getdatapost.php");#devuelvedatos de publicacion
+	include_once($_SERVER['DOCUMENT_ROOT']."/model/dateprofile.php");#devuelve datos de usuario
 	include_once($_SERVER['DOCUMENT_ROOT']."/model/profile/getsetlikes.php");#ñp incluyo para poder ver los likes de los post dateprofile
 	$data=new dataposts();
 	//$data->getdataposts(); #enviarle como parametro el id del post que se mostrara
@@ -48,8 +40,9 @@
 	$datauser->getdateprofile($_SESSION['id']);
 	$datauserpost=new dateprofile();
 	$datauserpost->getdateprofile($data->userid);
-	$viewtopostinprofile=new viewtopostinprofile();
-	$getsetlikes= new getsetlikes()
+	$getsetsearch=new getsetsearch();
+	$getsetlikes= new getsetlikes();
+	$search=$_GET['search'];
 ?>
 <?php
 	$pasa=true;
@@ -64,7 +57,7 @@
 		$position = ($urlpage-1)*5;
 		$pasa=false;
 	}
-	$page=$viewtopostinprofile->vtpip($position,$position+5,$datauser->id);//carga los datos a $page
+	$page=$getsetsearch->getsearchsimple($position,$position+5,$search);//carga los datos a $page
 	for ($x=0; $x<5; $x++){
 		if(empty($page[$x][0])){//rompe el bucle, evita que se creen publicaciones vacias
 			$boo=$x;
@@ -76,7 +69,7 @@
 		}
 	}
 	if($pasa==false){
-		$page=$viewtopostinprofile->vtpip($position,$position+$boo,$datauser->id);
+		$page=$getsetsearch->getsearchsimple($position,$position+$boo,$search);
 	}else{
 		$boo=5;
 	}

@@ -74,6 +74,10 @@
 		.photoandverify{
 			border:solid 1px #D2D2D2;
 		}
+		.photoprofile{
+			box-shadow: 1px 1px 4px -2px black;
+			border-radius: 10%;
+		}
 		.posttable{
 			border-bottom-width: medium;
 			border-top-width: medium;

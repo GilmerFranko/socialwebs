@@ -11,25 +11,40 @@
 	<link rel="stylesheet" href="/src/bootstrap4/css/bootstrap.min.css">
 	<script src="/view/script/jquery-3.4.1.min.js"></script>
 	<script src="/view/script/getsetreactions.js"></script>
-	<title>Perfil</title>
+	<title><?php echo $_GET['search'] ?></title>
 	<style>
 		
 	</style>
 	<script>
 		var pagina=1;
+		var found=false;
+		var seacabo=false;
 		$(document).ready(function() {
 			cargardatos();	
 		});
+		function getParameterByName(name){//captura un _get segun su parametro
+			name=name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+			var regex=new RegExp("[\\?&]" + name + "=([^&#]*)");
+			results = regex.exec(location.search);
+			return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+		}
 		function cargardatos(){
-  			$.get("/view/profile/viewtopostinprofile.php?urlpage="+pagina,
+			search=$("title").html();
+			var formdate={search:search};
+  			$.get("/model/search/getsetsearch.php?urlpage="+pagina,formdate,
    				function(data){
-    				if (data != "" & data !="end") {
-     					$(".beforeafter:last").before(data);
+   					if (data!="none" & data!="nonenone"){
+	    				if (data != "" & data !="end") {
+	     					$(".beforeafter:last").before(data);
+	     					found=true;
+	    				}
+    				}else if(data == "nonenone" & seacabo==false & found==true) {//si mostro contenido pero ya no hay mas entonces...
+	    				$(".beforeafter:last").before("<span class='info'>Vaya... Ya no hay que mostrar!</span");
+	    					seacabo=true;
+    				}else if(data=="none" & found==false & seacabo==false || data=="nonenone" & found==false & seacabo==false){//si en ningun momento encontro contenido entonces...
+	     				$(".beforeafter:last").before("<span class='info'>Without Results</span");
     				}
-    				if (data == "end") {
-    					$(".beforeafter:last").before("<span class='info'>Vaya... Ya no hay que mostrar!</span");
-    				}
-   			});				
+   				});				
 		}
 		$(window).scroll(function(){
 			if ($(window).scrollTop() == $(document).height() - $(window).height()){
@@ -69,15 +84,8 @@
     }*/
 	include_once($_SERVER['DOCUMENT_ROOT']."/view/barnav.php");#incluir barnav
 	include_once($_SERVER['DOCUMENT_ROOT']."/model/dateprofile.php");#incluir dateprofile
-	include_once($_SERVER['DOCUMENT_ROOT']."/model/profile/maketopost.php");#incluir dateprofile
 	$data=new dateprofile();
 	$data->getdateprofile($_SESSION['id']); #enviarle como parametros el id del usuario
-	$maketopost=new maketopost();
-	if(!empty($_POST['titlepost']) and !empty($_POST['contentpost']) and !empty($_POST['userid'])){
-		$maketopost->setmaketopost();
-	}else{
-		echo "string";
-	}
 	?>
 	<section class="section" align="">
 		<div class="container">

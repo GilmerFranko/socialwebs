@@ -6,7 +6,8 @@
 <link href="/view/css/reglasgenerales.css" rel="stylesheet" type="text/css" />
 <link href="/view/css/allcolors.css" rel="stylesheet" type="text/css" />
 <link rel="shortcut icon" href="/favicn.png?v=<?php echo time() ?>" />
-	<link rel="stylesheet" href="/src/bootstrap4/css/bootstrap.min.css">
+<link rel="stylesheet" href="/src/bootstrap4/css/bootstrap.min.css">
+<script src="/view/script/jquery-3.4.1.min.js"></script>
 <style type="text/css">
 #barnav {
 	/*background: -webkit-linear-gradient(var(--primarycolor) 80%,var(--secondcolor));*/
@@ -45,14 +46,14 @@
 }
 #formbuscar {
 	font-family: Verdana, Geneva, sans-serif;
-	font-size: 30px;
 	font-style: bold;
 	height: 30px;
-	padding: 4px 4px;
+	width: 100%;
+	padding: 8px 8px;
 	border:none;
 	outline:none;
 	color:gray;
-	font-size:14px;
+	font-size:18px;
 	overflow:hidden;
 }
 #tablacontenido {
@@ -121,6 +122,15 @@ li{
 	display: block;
 }*/
 </style>
+<script>
+	$(document).ready(function() {
+		$("#submitform").submit(submitform);
+	});
+	function submitform(){
+		location.href="/search/"+$("#formbuscar").val();
+        return false;
+	}
+</script>
 </head>
 <body bgcolor="#F3F3F3" link="#000066">
 <div class="row fixed-top align-items-center" id="barnav">
@@ -131,14 +141,16 @@ li{
 	</div>
 	<div class="col-lg-4" id="barbusqueda">
 		<li>
-			<div class="row align-items-center">
-				<div class="col-lg-8">
-					<input type="text" class="barrabuscar" id="formbuscar">
+			<form action="" id="submitform">
+				<div class="row align-items-center"> <!--search-->
+					<div class="col-lg-8">
+						<input type="text" class="barrabuscar" id="formbuscar" name="search">
+					</div>
+					<div class="col-lg-4">
+						<button class="buttonsearch" name="submit"><span class="ri-search-fill " style="color:var(--textcolor)"></span></button>
+					</div>
 				</div>
-				<div class="col-lg-4">
-					<button class="buttonsearch"><span class="ri-search-fill " style="color:var(--textcolor)"></span></button>
-				</div>
-			</div>
+			</form>
 			
 		</li>
 	</div>
