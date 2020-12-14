@@ -1,9 +1,9 @@
 :root{
 	--bodycolor:lavender;
-	--primarycolor:orange;
+	--primarycolor:#00769A;
 	--secondcolor:white;
 	--textcolor:black;
 	--secondtextcolor:white;
 	--grayborder:#D2D2D2;
-	/*#b70606rojo#c10303rojo#00769Aazulito#d9ca00amarillo*/
+	/*#b70606rojo#c10303rojo[#00769Aazulito,ghostwhite or lavander]#d9ca00amarillo[orange,cornsilk]*/
 }

@@ -87,3 +87,14 @@
 			border-bottom-color:var(--secondcolor);
 			margin-bottom: 30px;
 		}
+		.searchinprofile{
+			color:gray;
+			font-family: Verdana, Geneva, sans-serif;
+			font-style: bold;
+			height: 30px;
+			padding: 10px 10px;
+			border:none;
+			outline:none;
+			font-size:18px;
+			overflow:hidden;
+		}

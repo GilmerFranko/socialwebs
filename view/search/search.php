@@ -94,8 +94,8 @@
 					<td>
 						<table cellspacing="3" class="bar2" width="100%">
 							<tr>
-								<td><a href="#" class="enlaces2bar">Perfil</a></td>
-								<td><input type="text" placeholder="Buscar en este perfil"></td>
+								<td><a href="/profile" class="enlaces2bar">Perfil</a></td>
+								<td><input type="text" placeholder="Buscar en @<?php echo $data->nickname; ?>"></td>
 								<td><a href="/profile/websites" class="enlaces2bar">Sitios Webs</a></td>
 								<td><a href="/view/profile/opinions(prueba).php" class="enlaces2bar">Opiniones</a></td>
 								<td><a href="#" class="enlaces2bar">Informacion</a></td>
@@ -106,26 +106,26 @@
 				</tr>
 			</table>
 			<div class="row">
-				<div class="col-lg-3" align="center">
+				<div class="col-sm-4" align="center">
 					<div class="row">
-						<div class="col-lg-6">
+						<div class="col-sm-12">
 							<img class="photoprofile" src="<?php echo $data->pictureprofile;?>"alt="perfil" width="250px" onclick="showinfoimg(<?php echo $data->pictureprofile;?>)"/>
-							<figcaption><?php echo '@'.$data->nick;?></figcaption>
+							<figcaption><?php echo '@'.$data->nickname;?></figcaption>
 						</div>
 					</div>
 					<div class="row">
-						<div class="col-lg-4">
+						<div class="col-sm-4">
 							<a href="#" class="socialnets"><span class="ri-whatsapp-fill iconwhatsapp"></span></a>
 						</div>
-						<div class="col-lg-4">
+						<div class="col-sm-4">
 							<a href="#" class="socialnets"><span class="ri-facebook-box-fill iconfacebook"></span></a>
 						</div>
-						<div class="col-lg-4">
+						<div class="col-sm-4">
 							<a href="#" class="socialnets"><span class="ri-github-fill icongithub"></span></a>
 						</div>
 					</div>
 					<div class="row">
-						<div class="col-lg-4">
+						<div class="col-sm-12">
 							<form action="" id="formtopost" method="post">
 								<span class="info">Title</span><br>
 								<input type="text" name="titlepost" placeholder=""><br>
@@ -138,9 +138,9 @@
 						</div>
 					</div>
 				</div>
-				<div class="col-lg-9" align="center">
+				<div class="col-sm-8" align="center">
 					<div class="row" style="" align="">
-						<div class="col-lg-6" align="">
+						<div class="col-sm-12" align="">
 								<span class="beforeafter"></span>
 						</div>
 				</div>

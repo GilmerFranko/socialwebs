@@ -3,11 +3,11 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="/src/icomoon/style.css" rel="stylesheet" type="text/css" />
 	<link rel="stylesheet" href="/view/css/reglasgenerales.css">
     <link rel="stylesheet" href="/view/css/tablestyles.css">
-    <link href="/src/icomoon/style.css" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="/src/amaran/dist/css/amaran.min.css">
+    <link rel="stylesheet" href="/view/css/csspageprofile.css">
+    <link rel="stylesheet" href="/src/bootstrap4/css/bootstrap.min.css">
     <script src="/view/script/jquery-3.4.1.min.js"></script>
     <script src="/src/amaran/dist/js/jquery.amaran.min.js"></script>
 	<title>Agregar Sitio Web</title>
@@ -29,14 +29,14 @@
         $(function(){
             if(location.hash=="#pageadded"){
                 $.amaran({
-                content:{
+                'content':{
                     title:'Aviso',
                     message:'Pagina web agregada exitosamente!',
                     info:$("#url").val(),
                     icon:'ri-alarm-warning-fill'
                 },
                 theme:'awesome ok'
-});
+                });
             }
         });
         $("#formweb").submit(function(){return true;});
@@ -88,59 +88,108 @@
     include_once($_SERVER['DOCUMENT_ROOT']."/model/profile/sqladdwebsite.php");
 	$data=new dateprofile();
 	$data->getdateprofile($_SESSION['id']); #enviarle como parametros el id del usuario
-    echo "<br><br>";
-    echo $_SESSION['id'];
     if(!empty($_POST['name']) and !empty($_POST['url'])){
         $addwebsite=new addwebsite();
         $addwebsite->setaddwebsite($_SESSION['id']);
     }
     ?>
-	<section class="section" align="center">
-        <table class="tablecss">
-            <form  id="formweb" action="<?php echo $_SERVER['PHP_SELF'];?>"  method="post" on>
-            <tr>
-                <td><p>Nombre Del Sitio</p></td>
-                <td>
-                    <input class="inputtext" type="text" name="name">
-                </td>
-            </tr>
+    <section class="section" align="">
+        <div class="container">
+            <table cellspacing="3" class="containprofile" width="100%" border="0">
                 <tr>
                     <td>
-                    </td>
-                    <td>
-                    </td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td>
-                        <p>Url</p>
-                        <p id="infoweb" class="info"></p>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <span class="enlacessincolor">https://www.</span>
-                    </td>
-                    <td>
-                        <input  class="inputtext" type="text" name="url" id="url" focus="false">
+                        <table cellspacing="3" class="bar2" width="100%">
+                            <tr>
+                                <td><a href="#" class="enlaces2bar">Perfil</a></td>
+                                <td><input  class="searchinprofile" type="text" placeholder="Buscar en @<?php echo $data->nickname; ?>"></td>
+                                <td><a href="/profile/websites" class="enlaces2bar">Sitios Webs</a></td>
+                                <td><a href="/view/profile/opinions(prueba).php" class="enlaces2bar">Opiniones</a></td>
+                                <td><a href="#" class="enlaces2bar">Informacion</a></td>
+                                <td><a href="profile/settings" class="enlaces2bar">Mas</a></td>
+                            </tr>
+                        </table>
                     </td>
                 </tr>
-                <tr>
-                    <td></td>
-                    <td>
-                        <p>Imagen(opcional)</p>
-                        <input class="inputtext" type="text" name="image">
-                    </td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td>
-                        <input class="inputtext" type="submit">
-                    </td>
-                </tr>
-
-            </form>
-        </table>
+            </table>
+            <div class="row">
+                <div class="col-sm-4" align="center">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <img class="photoprofile" src="<?php echo $data->pictureprofile;?>"alt="perfil" width="250px" onclick="showinfoimg(<?php echo $data->pictureprofile;?>)"/>
+                            <figcaption><?php echo '@'.$data->nickname;?></figcaption>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <a href="#" class="socialnets"><span class="ri-whatsapp-fill iconwhatsapp"></span></a>
+                        </div>
+                        <div class="col-sm-3">
+                            <a href="#" class="socialnets"><span class="ri-facebook-box-fill iconfacebook"></span></a>
+                        </div>
+                        <div class="col-sm-3">
+                            <a href="#" class="socialnets"><span class="ri-github-fill icongithub"></span></a>
+                        </div>
+                        <div class="col-sm-3">
+                            <a href="#" class="socialnets"><span class="ri-message-fill"></span></a>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <form action="" id="formtopost" method="post">
+                                <span class="info">Title</span><br>
+                                <input type="text" name="titlepost" placeholder=""><br>
+                                <input type="hidden" name="userid" value="<?php echo $_SESSION['id'];?>"><br>
+                                <span class="info">Think it and Write it</span><br>
+                                <textarea name="contentpost" id="" cols="27" rows="10"></textarea><br>
+                                <input type="submit" value="Publicar    ">
+                                <button>Adjuntar Archivos</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-8" align="center">
+                    <div class="row" style="" align="">
+                        <div class="col-sm-12" align="">
+                            <form id="formweb" action="<?php echo $_SERVER['PHP_SELF'];?>"  method="post" on>
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <span>Website name</span>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <input class="inputtext" type="text" name="name">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <p>Url</p>
+                                    <p id="infoweb" class="info"></p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-10">
+                                    <span class="enlacesconcolor">https://www.</span>
+                                    <input  class="inputtext" type="text" name="url" id="url" focus="false">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <p>Imagen(opcional)</p>
+                                            <input class="inputtext" type="text" name="image">
+                                            <input class="inputtext" type="submit">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
 </body>
 </html>

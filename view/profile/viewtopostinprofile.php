@@ -11,7 +11,7 @@
 			if ($resultado){
 				if(mysqli_num_rows($resultado)>0){//si existe al menos una 
 					$a=0;
-					while($fila=$resultado->fetch_row()){//mientras exista recorra la fila
+					while($fila=$resultado->fetch_assoc()){//mientras exista recorra la fila
 						$this->devuelvefila[$a] =$fila;
 						$a++;
 					}
@@ -66,7 +66,7 @@
 	}
 	$page=$viewtopostinprofile->vtpip($position,$position+5,$datauser->id);//carga los datos a $page
 	for ($x=0; $x<5; $x++){
-		if(empty($page[$x][0])){//rompe el bucle, evita que se creen publicaciones vacias
+		if(empty($page[$x]['id'])){//rompe el bucle, evita que se creen publicaciones vacias
 			$boo=$x;
 			$end="end";
 			$x=7;
@@ -87,19 +87,33 @@
 	for ($x=0; $x<$boo; $x++) {	
 	if(!empty($page)){
 	
-		if(empty($page[$x][1])){//rompe el bucle, evita que se creen publicaciones vacias
+		if(empty($page[$x]['userid'])){//rompe el bucle, evita que se creen publicaciones vacias
 			$x=6;
 			return false;
 		} 
-		if(strlen($page[$x][3])>=320){ //si el parrafo pasa los n numeros de caracteres lo corta
-			$page[$x][3]=substr($page[$x][3],0,320);
-			$page[$x][3]=$page[$x][3] . "... <a href='#' class='enlacessincolor'>Ver mas</a>";
+		if(strlen($page[$x]['content'])>=320){ //si el parrafo pasa los n numeros de caracteres lo corta
+			$page[$x]['content']=substr($page[$x]['content'],0,320);
+			$page[$x]['content']=$page[$x]['content'] . "... <a href='#' class='enlacessincolor'>Ver mas</a>";
                 					
 		}
- ?>
+ $datauser->getdateprofile($page[$x]['userid']);//carga los datos del usuario segun cada post
+ ?><!--es mejor agregar aqui una clase que ejecute esto para poder heredarla de varios lugares-->
+ <div class="row"><!--nombre y perfil-->
+ 	<div class="col-sm-2" style="background-color:var(--secondcolor);color:white; ">
+        <a href="#" style="text-decoration: none; font-size: 16px;"><i class="ri-settings-5-fill"></i></a>
+ 	</div>
+ 	<div class="col-sm-8">
+        <a href="#" style="text-decoration: none; font-size: 16px;" class="linknameprofile"><?php echo $datauser->nickname; ?></a>
+ 	</div>
+ 	<div class="col-sm-2">
+		<a href="#" class="butom, foticonprofile" style="background-color:var(--secondcolor);color:white;">
+			<img src="<?php echo $datauser->pictureprofile; ?>"alt="perfil" width="50px">
+		</a>
+ 	</div>
+ </div>
  <div class="row">
  	<div class="col">
-		<a href="/view/profile/viewtopost.php?idurlpost='<?php echo $page[$x][0]?>'" class="enlacesconcolor"><h3><?php echo $page[$x][2];?><!--title--></h3></a>
+		<a href="/view/profile/viewtopost.php?idurlpost='<?php echo $page[$x]["id"]?>'" class="enlacesconcolor"><h3><?php echo $page[$x]['title'];?><!--title--></h3></a>
 	</div>
 </div>
 <div class="row">
@@ -109,21 +123,21 @@
 </div>
 <div class="row">
 	<div class="col">
-		<span><?php echo $page[$x][3];?></span><!--content-->
+		<span><?php echo $page[$x]['content'];?></span><!--content-->
 	</div>
 </div>
 <div class="row">
 	<div class="col">
 		<div class="commentandreactions" width="100%" align="center">
-			<i class="ri-dislike-fill ilike" id="<?php echo 'like'.$page[$x][0];?>" onclick="liked(<?php echo $page[$x][1];?>,<?php echo $page[$x][0]?>)">
+			<i class="ri-dislike-fill ilike" id="<?php echo 'like'.$page[$x]['id'];?>" onclick="liked(<?php echo $page[$x]['userid'];?>,<?php echo $page[$x]['id']?>)">
 						<!--con este script system podra saber que icono poner segun si es like o no-->
 				<script>
 					$(document).ready(function() {
-						liked(<?php echo $page[$x][1];?>,<?php echo $page[$x][0]?>)
+						liked(<?php echo $page[$x]['userid'];?>,<?php echo $page[$x]['id']?>)
 					});
 				</script>
 				<?php
-				 	$getsetlikes->getnumlikesof($page[$x][1],$page[$x][0]);
+				 	$getsetlikes->getnumlikesof($page[$x]['userid'],$page[$x]['id']);
 					echo $getsetlikes->devuelvenumfila; 
 				?>
 						
